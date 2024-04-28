@@ -126,6 +126,7 @@ const My_Courses = () => {
                     <button
                       className="text-sm text-gray-400 hover:text-white focus:outline-none"
                       onClick={() => handleShare(course.referCode)}
+disabled={coursesToShow.length === 0} // Disable the button if there are no courses
                     >
                       Share Link
                     </button>
