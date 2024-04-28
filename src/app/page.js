@@ -1,4 +1,3 @@
-
 import React from "react";
 import Navbar from "./components/client-only/nevbar/Navbar";
 import Footer from "./components/client-only/footer/Footer";
@@ -8,7 +7,6 @@ import FeatureBox from "./components/client-only/featurebox/FeatureBox";
 import HeaderSec from "./components/client-only/headersec/HeaderSec";
 import Artical from "./components/client-only/artical/Artical";
 import FeatureSection from "./components/client-only/featuresection/FeatureSection";
-
 
 export const metadata = {
   title: "Home Page",

@@ -1,8 +1,12 @@
 import React from 'react';
+import Navbar from '../components/client-only/nevbar/Navbar';
+import Footer from '../components/client-only/footer/Footer';
 
 const Policy = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <>
+    <Navbar/>
+    <div className="container mx-auto px-6 py-12 mt-16 mb-16">
       <h2 className="text-2xl text-center font-semibold mb-4 ">Our Policy</h2>
       
       <p className="text-gray-600 z-50 mb-4">
@@ -32,6 +36,8 @@ const Policy = () => {
             Please note that for the "Refund" you need to mail us only at gurukulskills57@gmail.com
             </p>
     </div>
+    <Footer/>
+    </>
   );
 };
 

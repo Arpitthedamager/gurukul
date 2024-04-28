@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const My_subs = () => {
   // Mock data for subscriptions from MongoDB
@@ -113,14 +114,14 @@ const My_subs = () => {
                         {subscription.description}
                       </p>
                       <div className="item-footer">
-                        <a href="/not">
+                        <Link href={`/subcor/${subscription.id}`}>
                         <button
                           className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                           onClick={() => handleBuyNow(subscription.id)}
                           >
                           Start Learning
                         </button>
-                          </a>
+                          </Link>
                         <div className="flex justify-between items-center mt-4">
                           <button
                             className="text-sm text-gray-500 hover:text-black focus:outline-none"

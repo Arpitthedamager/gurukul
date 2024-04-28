@@ -1,6 +1,40 @@
+"use client";
+import Footer from '@/app/components/client-only/footer/Footer';
+import Navbar from '@/app/components/client-only/nevbar/Navbar';
 import React from 'react';
-
+import { useEffect, useRef, useState } from 'react';
 const SilverPackage = () => {
+    const scriptLoadedRef = useRef(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        if (!scriptLoadedRef.current) {
+            const script = document.createElement('script');
+            script.src = "https://checkout.razorpay.com/v1/payment-button.js";
+            script.async = true;
+            script.dataset.payment_button_id = "pl_O1lSJYOUZy2XIZ";
+            script.onload = () => {
+                scriptLoadedRef.current = true;
+            };
+            document.getElementById('razorpay-button-container').appendChild(script);
+        }
+    }, []);
+    
+    const handlePaymentEvents = () => {
+        if (window.Razorpay) {
+            const razorpay = new window.Razorpay({});
+            razorpay.on('payment.failed', function(response) {
+                setPaymentStatus("Payment failed: " + response.error.description);
+            });
+            razorpay.on('payment.success', function(response) {
+                setPaymentStatus("Payment successful! Payment ID: " + response.razorpay_payment_id);
+            });
+            razorpay.on('payment.pending', function(response) {
+                setPaymentStatus("Payment pending: " + response.error.description);
+            });
+        }
+    };
+         
     // Define dynamic data
     const courseData = {
         title: "Silver Package",
@@ -31,7 +65,11 @@ const SilverPackage = () => {
     };
 
     return (
-        <div className="font-sans max-w-4xl mx-auto px-4 py-8 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-r from-gray-100 to-white">
+        <>
+        <Navbar/>
+        <div className=' pt-6'>
+
+        <div className="font-sans max-w-4xl mx-auto mt-16 px-4 py-8 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-r from-gray-100 to-white">
             {/* Title and Description */}
             <div className="text-center mb-8">
                 <h1 className="text-5xl font-bold mb-4 text-gray-900">{courseData.title}</h1>
@@ -48,9 +86,14 @@ const SilverPackage = () => {
                     <div className="text-3xl font-bold mb-4 text-gray-900">
                         ₹{courseData.price} <span className="text-lg text-gray-500 line-through">₹{courseData.originalPrice}</span>
                     </div>
-                    <button className="bg-blue-500 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300">Buy Now</button>
+                    <div id="razorpay-button-container"></div>
+                    {/* <button className="bg-blue-500 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300">Buy Now</button> */}
                 </div>
             </div>
+            {errorMessage && (
+                        <div className="text-center mb-4 text-red-600">{errorMessage}</div>
+                    )}
+
 
             {/* Includes Section */}
             <div className="text-center mb-12 overflow-x-auto">
@@ -91,6 +134,9 @@ const SilverPackage = () => {
                 </ul>
             </div>
         </div>
+                    </div>
+        <Footer/>
+                    </>
     );
 };
 

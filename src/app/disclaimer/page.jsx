@@ -1,8 +1,13 @@
 import React from 'react';
+import Navbar from '../components/client-only/nevbar/Navbar';
+import Footer from '../components/client-only/footer/Footer';
 
 const Disclaimer = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <>
+    <Navbar/>
+    <div >
+    <div className="container mx-auto px-6 py-12 mt-16">
       <h2 className="text-2xl text-center font-semibold mb-4 ">Disclaimer</h2>
       
       <p className="text-gray-600 z-50 mb-4">
@@ -29,6 +34,9 @@ const Disclaimer = () => {
         There is no assurance that examples of past earnings can be duplicated in the future. We cannot guarantee your future results and/or success. There are some unknown risks in business and on the internet that we cannot foresee which could reduce the results you experience. We are not responsible for your actions.
       </p>
     </div>
+    </div>
+    <Footer/>
+    </>
   );
 };
 

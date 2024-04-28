@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 const Profilimg = () => {
   return (
     <div className="absolute z-40 top-16 bg-gray-800 w-48 h-51 rounded-md md:right-4 flex flex-col justify-between">
@@ -13,9 +14,9 @@ const Profilimg = () => {
       <a href="/wallet">
         <p className="cursor-pointer p-2 hover:bg-gray-700">wallet</p>
       </a>
-      <a href="/">
+      <button onClick={()=>{signOut();}}>
         <p className="cursor-pointer p-2 hover:bg-gray-700">Logout</p>
-      </a>
+      </button>
     </div>
   );
 };

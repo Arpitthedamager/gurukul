@@ -26,6 +26,7 @@ const WalletPage = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen flex justify-center items-center">
       <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="px-6 py-4">
@@ -52,6 +53,18 @@ const WalletPage = () => {
                   required
                 />
               </div>
+              <div className="mb-4">
+                <label className="block text-sm font-semibold text-gray-600 mb-2" htmlFor="amount">UPI Id:</label>
+                <input
+                  className="w-full px-4 py-2 border rounded-lg text-black focus:outline-none focus:border-blue-500"
+                  type="number"
+                  id="upi id"
+                  name="aupi id"
+                  placeholder="Enter upi id"
+                  min="0"
+                  required
+                />
+              </div>
               <div className="text-right">
                 <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg focus:outline-none focus:bg-blue-600 transition duration-300 ease-in-out">Redeem</button>
               </div>
@@ -75,6 +88,7 @@ const WalletPage = () => {
         </div>
       </div>
     </div>
+                  </>
   );
 };
 

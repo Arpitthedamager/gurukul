@@ -9,6 +9,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import Navbar from "../components/client-only/nevbar/Navbar";
+import Footer from "../components/client-only/footer/Footer";
 
 const ProfileCard = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -232,6 +233,7 @@ const ProfileCard = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

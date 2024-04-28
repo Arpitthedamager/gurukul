@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
-import Typewriter from "typewriter-effect";
+// import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const subscriptions = [
   {
@@ -37,7 +38,7 @@ const FeatureBox = () => {
               <strong>Subscriptions</strong>
             </h4>
             <p className="text-center text-xl text-white-600">
-              <Typewriter
+              {/* <Typewriter
                 options={{
                   strings: [
                     "Explore our top-rated courses and boost your skills.",
@@ -48,7 +49,7 @@ const FeatureBox = () => {
                   delay: 50,
                   deleteSpeed: 50,
                 }}
-              />
+              /> */}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
@@ -78,12 +79,12 @@ const FeatureBox = () => {
                       {subscription.description}
                     </p>
                     <div className="item-footer">
-                      <a
-                        href={`/subscription/${subscriptions.id}`}
+                      <Link
+                        href={`/subscription/${subscription.id}`}
                         className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                       >
                         Start Learning
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -2,26 +2,18 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/client-only/nevbar/Navbar";
 import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
+// import Typewriter from "typewriter-effect";
 import Link from "next/link";
 import My_Courses from "../components/client-only/mycourses/MyCourses";
+import Footer from "../components/client-only/footer/Footer";
 
-const titles = [
-  "Ignite Your Passion with Our Elite Courses",
-  "Unlock Your Potential with Cutting-Edge Tech Courses",
-  "Explore the Future of Learning with Gurucul Skills",
-];
+// const titles = [
+//   "Ignite Your Passion with Our Elite Courses",
+//   "Unlock Your Potential with Cutting-Edge Tech Courses",
+//   "Explore the Future of Learning with Gurucul Skills",
+// ];
 
 const CoursesPage = () => {
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const coursesData = [
     {
@@ -88,10 +80,10 @@ const CoursesPage = () => {
     <>
       <Navbar />
       <div className="container mx-auto px-4 md:px-10 py-10 md:py-20">
-        <h4 className="text-center text-5xl font-extrabold text-yellow-600  ">
+        <h4 className="text-center text-5xl font-extrabold text-yellow-600 pt-14 md:py-8">
           <strong>Courses</strong>
         </h4>
-        <p className="text-xl font-extrabold text-center mb-10 md:mb-20 text-white-600">
+        {/* <p className="text-xl font-extrabold text-center mb-10 md:mb-20 text-white-600">
           <Typewriter
             options={{
               strings: titles,
@@ -101,7 +93,7 @@ const CoursesPage = () => {
               deleteSpeed: 50,
             }}
           />
-        </p>
+        </p> */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-10 md:gap-20">
           {coursesData.map((course, index) => (
@@ -150,6 +142,7 @@ const CoursesPage = () => {
         </div>
       </div>
       <My_Courses/>
+      <Footer/>
     </>
   );
 };
