@@ -23,7 +23,7 @@ const SubscriptionPackage = () => {
     return (
         <>
         <Navbar/>
-        <div className=' pt-8'></div>
+        <div className= "pt-8"></div>
         <div className="font-sans max-w-4xl mt-16 pt-16 mx-auto px-4 py-8 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-r from-gray-100 to-white">
             {/* Title and Description */}
             <div className="text-center mb-8">
@@ -42,7 +42,7 @@ const SubscriptionPackage = () => {
                         <span className="mr-2">{subscriptionData.price}</span>
                         <span className="text-lg text-gray-500 line-through">{subscriptionData.originalPrice}</span>
                     </div>
-                    <a href='https://rzp.io/l/qX6tDX4AK'>
+                    <a href="https://rzp.io/l/qX6tDX4A">
                     <button className="bg-blue-500 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300">Buy Now</button>
                     </a>
                 </div>

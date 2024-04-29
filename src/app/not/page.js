@@ -5,9 +5,9 @@ const not = () => {
     <>
       <Navbar />
       <div className=" text-center pt-64 text-4xl text-gray-600 mb-64">
-        <h2 >please wait for update</h2>
+        <h2>please wait for update</h2>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

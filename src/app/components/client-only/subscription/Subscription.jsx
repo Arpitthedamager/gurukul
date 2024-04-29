@@ -24,7 +24,8 @@ const My_subs = () => {
       name: "AI Revolution",
       imageSrc: "/elite.jpeg",
       price: "$79",
-      description: "Join the AI revolution and master cutting-edge technologies.",
+      description:
+        "Join the AI revolution and master cutting-edge technologies.",
     },
     {
       id: 3,
@@ -43,7 +44,9 @@ const My_subs = () => {
 
   const filterSubscriptions = () => {
     const filteredSubscriptions = subscriptions.filter((subscription) => {
-      return subscriptionsFromDB.some((dbSubscription) => dbSubscription.id === subscription.id);
+      return subscriptionsFromDB.some(
+        (dbSubscription) => dbSubscription.id === subscription.id
+      );
     });
     setSubscriptionsToShow(filteredSubscriptions);
   };
@@ -53,7 +56,9 @@ const My_subs = () => {
   };
 
   const handleCopy = (subscriptionId) => {
-    const subscription = subscriptionsFromDB.find(sub => sub.id === subscriptionId);
+    const subscription = subscriptionsFromDB.find(
+      (sub) => sub.id === subscriptionId
+    );
     if (subscription) {
       navigator.clipboard.writeText(subscription.referCode);
       console.log("Copied Refer Code:", subscription.referCode);
@@ -63,7 +68,9 @@ const My_subs = () => {
   };
 
   const handleShare = async (subscriptionId) => {
-    const subscription = subscriptionsFromDB.find(sub => sub.id === subscriptionId);
+    const subscription = subscriptionsFromDB.find(
+      (sub) => sub.id === subscriptionId
+    );
     if (subscription) {
       const url = `/refer/${subscription.referCode}`;
       try {
@@ -115,13 +122,13 @@ const My_subs = () => {
                       </p>
                       <div className="item-footer">
                         <Link href={`/subcor/${subscription.id}`}>
-                        <button
-                          className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
-                          onClick={() => handleBuyNow(subscription.id)}
+                          <button
+                            className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
+                            onClick={() => handleBuyNow(subscription.id)}
                           >
-                          Start Learning
-                        </button>
-                          </Link>
+                            Start Learning
+                          </button>
+                        </Link>
                         <div className="flex justify-between items-center mt-4">
                           <button
                             className="text-sm text-gray-500 hover:text-black focus:outline-none"

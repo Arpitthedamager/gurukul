@@ -96,19 +96,29 @@ const Footer = () => {
           {/* Contact Information */}
           <div className="w-full md:w-1/2">
             <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-            <p className="mb-3"><a href="https://www.google.com/maps?q=latitude,longitude">MIG-B-622 Kalindi vihar, Agra, India</a></p>
-            <p className="mb-3">Phone:<a
+            <p className="mb-3">
+              <a href="https://www.google.com/maps?q=latitude,longitude">
+                MIG-B-622 Kalindi vihar, Agra, India
+              </a>
+            </p>
+            <p className="mb-3">
+              Phone:
+              <a
                 href="tel:gurukulskills57@gmail.com "
                 className=" hover:text-blue-400 transition duration-300 ease-in-out m-1"
-              > 9719322171</a></p>
+              >
+                {" "}
+                9719322171
+              </a>
+            </p>
 
             <p>
-              Email: 
+              Email:
               <a
                 href="mailto:gurukulskills57@gmail.com "
                 className=" hover:text-blue-400 transition duration-300 ease-in-out m-1"
               >
-                 gurukulskills57@gmail.com
+                gurukulskills57@gmail.com
               </a>
             </p>
           </div>

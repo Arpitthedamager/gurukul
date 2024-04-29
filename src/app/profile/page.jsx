@@ -18,8 +18,7 @@ const ProfileCard = () => {
     username: "@eleanorpena",
     id: "Oxc4c16a645_b21a",
     followers: 1069,
-    bio:
-      "Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork. Artist/ Creative Director by Day #NFT minting@ with FND night.",
+    bio: "Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork. Artist/ Creative Director by Day #NFT minting@ with FND night.",
     joined: "May, 2021",
     social: {
       twitter: "twitter.com/eleanorpena",
@@ -151,11 +150,11 @@ const ProfileCard = () => {
                   >
                     <FaTimes />
                   </button>
-                  <h2 className="text-2xl font-bold text-center text-gray-900  mb-4">Edit Profile</h2>
+                  <h2 className="text-2xl font-bold text-center text-gray-900  mb-4">
+                    Edit Profile
+                  </h2>
                   <div className="form-group">
-                    <label className="form-label text-gray-700">
-                      Name
-                    </label>
+                    <label className="form-label text-gray-700">Name</label>
                     <input
                       type="text"
                       className="form-input bg-gray-100 focus:outline-none border text-gray-900 border-gray-300 rounded-md px-4 py-2 w-full"
@@ -169,9 +168,7 @@ const ProfileCard = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label text-gray-700">
-                      Username
-                    </label>
+                    <label className="form-label text-gray-700">Username</label>
                     <input
                       type="text"
                       className="form-input bg-gray-100 focus:outline-none border text-gray-900  border-gray-300 rounded-md px-4 py-2 w-full"
@@ -185,9 +182,7 @@ const ProfileCard = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label text-gray-700">
-                      Bio
-                    </label>
+                    <label className="form-label text-gray-700">Bio</label>
                     <textarea
                       className="form-textarea h-40 resize-none bg-gray-100  text-gray-900 focus:outline-none border border-gray-300 rounded-md px-4 py-2 w-full"
                       style={{ color: "#4a5568" }}
@@ -233,7 +228,7 @@ const ProfileCard = () => {
           )}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

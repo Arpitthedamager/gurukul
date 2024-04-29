@@ -1,5 +1,5 @@
 "use client";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "../components/client-only/nevbar/Navbar";
 import { signIn, useSession } from "next-auth/react";
@@ -90,7 +90,7 @@ function Login() {
           style={{
             maxWidth: "400px",
             margin: "0px auto",
-            backgroundColor: "#fff",  
+            backgroundColor: "#fff",
             padding: "20px",
             borderRadius: "5px",
             boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
@@ -149,7 +149,6 @@ function Login() {
                 <p className=" text-red-600 text-[16px] mb-4">
                   {error && error}
                 </p>
-
 
                 {/* Forgot Password Link */}
                 <p className="text-center mt-4">

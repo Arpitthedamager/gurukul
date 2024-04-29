@@ -16,12 +16,18 @@ const Leaderboard = () => {
   ];
 
   // Sort leaderboard data by prize in descending order
-  const sortedData = [...leaderboardData].sort((a, b) => b.referrals - a.referrals );
+  const sortedData = [...leaderboardData].sort(
+    (a, b) => b.referrals - a.referrals
+  );
 
   let topThree = sortedData.slice(0, 3);
 
   // Reorder topThree array to position users as required
-  [topThree[0], topThree[1], topThree[2]] = [topThree[1], topThree[0], topThree[2]];
+  [topThree[0], topThree[1], topThree[2]] = [
+    topThree[1],
+    topThree[0],
+    topThree[2],
+  ];
 
   // Remove top three users from sortedData
   const remainingData = sortedData.slice(3);
@@ -40,7 +46,11 @@ const Leaderboard = () => {
               {index === 0 ? "🥈" : index === 1 ? "👑" : "🥉"}
             </span>
             <div className="rounded-full overflow-hidden border-4 border-white shadow-lg">
-              <img src={user.photo} alt={user.name} className="w-24 h-24 object-cover" />
+              <img
+                src={user.photo}
+                alt={user.name}
+                className="w-24 h-24 object-cover"
+              />
             </div>
             <h2 className="text-xl font-semibold">{user.name}</h2>
             <p className="text-sm">Referrals: {user.referrals}</p>
@@ -56,7 +66,9 @@ const Leaderboard = () => {
             <tr className="bg-gray-800 text-white">
               <th className="border border-gray-300 px-4 py-2">Rank</th>
               <th className="border border-gray-300 px-4 py-2">Name</th>
-              <th className="border border-gray-300 px-4 py-2">Number of Referrals</th>
+              <th className="border border-gray-300 px-4 py-2">
+                Number of Referrals
+              </th>
               <th className="border border-gray-300 px-4 py-2">Prize Win</th>
             </tr>
           </thead>
@@ -70,10 +82,18 @@ const Leaderboard = () => {
                     : "bg-white text-gray-700"
                 }
               >
-                <td className="border border-gray-300 px-4 py-2">{index + 4}</td>
-                <td className="border border-gray-300 px-4 py-2">{user.name}</td>
-                <td className="border border-gray-300 px-4 py-2">{user.referrals}</td>
-                <td className="border border-gray-300 px-4 py-2">${user.prize}</td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {index + 4}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {user.name}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {user.referrals}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  ${user.prize}
+                </td>
               </tr>
             ))}
           </tbody>

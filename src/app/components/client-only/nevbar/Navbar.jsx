@@ -76,21 +76,21 @@ const Navbar = ({ toggleMobileMenu }) => {
               </Link>
             ))}
             {/* {session ? ( */}
-              <>
-                <div
-                  className="hidden md:flex"
-                  onClick={() => setProfile(!profile)} // Toggle mobile menu when clicking the profile image
-                >
-                  <img
-                    src="pop.webp" // Replace with actual path to profile image
-                    alt="Profile"
-                    className="h-10 w-10 rounded-full cursor-pointer mr-2 md:mr-4" // Add margin to the right side in desktop mode
-                  />
-                  {profile ? <Profilimg /> : ""}
-                </div>
-              </>
+            <>
+              <div
+                className="hidden md:flex"
+                onClick={() => setProfile(!profile)} // Toggle mobile menu when clicking the profile image
+              >
+                <img
+                  src="pop.webp" // Replace with actual path to profile image
+                  alt="Profile"
+                  className="h-10 w-10 rounded-full cursor-pointer mr-2 md:mr-4" // Add margin to the right side in desktop mode
+                />
+                {profile ? <Profilimg /> : ""}
+              </div>
+            </>
             {/* ) : ( */}
-              <></>
+            <></>
             {/* )} */}
           </div>
 

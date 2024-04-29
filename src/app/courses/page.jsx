@@ -14,7 +14,6 @@ import Footer from "../components/client-only/footer/Footer";
 // ];
 
 const CoursesPage = () => {
-
   const coursesData = [
     {
       id: 1,
@@ -128,21 +127,21 @@ const CoursesPage = () => {
                     - {course.level} level income
                   </p>
                   <Link href={`/courses/${course.id}`}>
-                  <button
-                    className="w-full bg-white text-purple-800 py-2 md:py-4 px-6 md:px-14 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50  hover:from-yellow-700 hover:to-yellow-800"
-                    onClick={() => handleBuyNow(course.title)}
-                  >
+                    <button
+                      className="w-full bg-white text-purple-800 py-2 md:py-4 px-6 md:px-14 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50  hover:from-yellow-700 hover:to-yellow-800"
+                      onClick={() => handleBuyNow(course.title)}
+                    >
                       Elevate Now
-                  </button>
-                      </Link>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-      <My_Courses/>
-      <Footer/>
+      <My_Courses />
+      <Footer />
     </>
   );
 };

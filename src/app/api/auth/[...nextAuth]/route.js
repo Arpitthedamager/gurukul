@@ -11,7 +11,7 @@ async function login(credentials) {
     if (!user) throw new Error("Wrong Credentials");
     const isCorrect = await bcrypt.compare(credentials.password, user.password);
     if (!isCorrect) throw new Error("Wrong Credentials");
-    console.log(user)
+    console.log(user);
     return user;
   } catch (error) {
     throw new Error("Something went wrong");

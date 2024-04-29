@@ -6,21 +6,21 @@ import Link from "next/link";
 
 const subscriptions = [
   {
-    id:"1",
+    id: "1",
     name: "Quantum Mastery",
     imageSrc: "/elite.jpeg",
     price: "$99",
     description: "Dive into the quantum world with our expert-led course.",
   },
   {
-    id:"2",
+    id: "2",
     name: "AI Revolution",
     imageSrc: "/elite.jpeg",
     price: "$79",
     description: "Join the AI revolution and master cutting-edge technologies.",
   },
   {
-    id:"3",
+    id: "3",
     name: "Data Science Essentials",
     imageSrc: "/elite.jpeg",
     price: "$69",
@@ -93,7 +93,6 @@ const FeatureBox = () => {
           </div>
         </div>
       </section>
-      
     </div>
   );
 };

@@ -14,7 +14,11 @@ const Profilimg = () => {
       <a href="/wallet">
         <p className="cursor-pointer p-2 hover:bg-gray-700">wallet</p>
       </a>
-      <button onClick={()=>{signOut();}}>
+      <button
+        onClick={() => {
+          signOut();
+        }}
+      >
         <p className="cursor-pointer p-2 hover:bg-gray-700">Logout</p>
       </button>
     </div>
