@@ -62,7 +62,7 @@ const FeatureBox = () => {
               >
                 <div className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white">
                   <div className="item-img h-72 overflow-hidden">
-                    <img
+                    <Image
                       src={subscription.imageSrc}
                       alt={subscription.name}
                       className="w-full h-full object-cover"

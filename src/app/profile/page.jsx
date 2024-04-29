@@ -78,7 +78,7 @@ const ProfileCard = () => {
               {/* Profile Card Content */}
               <div className="flex items-center justify-center">
                 <div className="relative w-32 h-32 mr-4 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     src={profileData.profileImage || "/pop.webp"}
                     className="absolute inset-0 w-full h-full object-cover cursor-pointer"
                     alt="Profile Image"

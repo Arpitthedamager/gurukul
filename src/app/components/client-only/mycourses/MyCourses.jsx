@@ -143,7 +143,7 @@ const My_Courses = () => {
               }`}
             >
               <div className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full ">
-                <img
+                <Image
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 md:h-64 object-cover shadow-md"

@@ -85,7 +85,7 @@ const SilverPackage = () => {
           <div className="flex flex-col lg:flex-row justify-center items-center mb-12 hover:scale-105 transition-transform duration-300">
             <div className="w-full lg:w-1/2 relative rounded-lg overflow-hidden shadow-md mb-4 lg:mb-0 transform transition-transform duration-300 hover:grayscale-0">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-sky-500 opacity-80 lg:opacity-100 transition-opacity duration-300"></div>
-              <img
+              <Image
                 src="/course_image.jpg"
                 alt="Course Image"
                 className="w-full h-64 object-cover filter grayscale hover:grayscale-0 transition-filter duration-300"
