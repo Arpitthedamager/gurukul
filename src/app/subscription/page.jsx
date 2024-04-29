@@ -7,10 +7,10 @@ const SubscriptionPage = () => {
     <>
       <Navbar />
       <div className="container mx-auto px-4 py-8">
-        <FeatureBox/>
+        <FeatureBox />
       </div>
-      <My_subs/>
-      <Footer/>
+      <My_subs />
+      <Footer />
     </>
   );
 };
