@@ -51,6 +51,14 @@ const Footer = () => {
                   Policy
                 </a>
               </li>
+              <li className="mb-3">
+                <a
+                  href="/refund"
+                  className="hover:text-gray-300 transition duration-300"
+                >
+                  Refund Policy
+                </a>
+              </li>
             </ul>
           </div>
 

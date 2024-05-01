@@ -5,11 +5,11 @@ import Navbar from "../components/client-only/nevbar/Navbar";
 import { signIn, useSession } from "next-auth/react";
 
 function Login() {
+  const { status: data, data: session } = useSession(); 
   const router = useRouter();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isForgotPasswordPopupVisible, setIsForgotPasswordPopupVisible] =
     useState(false);
-  // const session = useSession();
   const [forgotPasswordData, setForgotPasswordData] = useState({ email: "" });
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [error, setError] = useState("");
@@ -18,11 +18,11 @@ function Login() {
     email: "",
     password: "",
   });
-  // useEffect(()=>{
-  //   if(session?.status === "authenticated"){
-  //     router.replace("/");
-  //   }
-  // }, [session, router])
+  useEffect(()=>{
+    if(session){
+      router.replace("/");
+    }
+  }, [session, router])
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(formData);

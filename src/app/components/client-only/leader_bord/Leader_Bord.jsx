@@ -1,18 +1,28 @@
+"use client"
 import React from "react";
+import { useState } from "react";
 
 const Leaderboard = () => {
   // Sample leaderboard data
   const leaderboardData = [
     { id: 1, name: "John", referrals: 5, prize: 50, photo: "/pop.webp" },
     { id: 2, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
-    { id: 3, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
+    { id: 3, name: "Doe", referrals: 3, prize: 30, photo: "/book.jpeg" },
     { id: 4, name: "Alice", referrals: 2, prize: 60, photo: "/pop.webp" },
     { id: 5, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
-    { id: 2, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
-    { id: 3, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
-    { id: 4, name: "Alice", referrals: 2, prize: 60, photo: "/alice.jpg" },
-    { id: 5, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
-    // ... add more data for top 10
+    { id: 6, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
+    { id: 7, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
+    { id: 8, name: "Alice", referrals: 2, prize: 60, photo: "/alice.jpg" },
+    { id: 9, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
+    { id: 0, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
+    { id: 11, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
+    { id: 12, name: "Alice", referrals: 2, prize: 60, photo: "/pop.webp" },
+    { id: 13, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
+    { id: 14, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
+    { id: 15, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
+    { id: 16, name: "Alice", referrals: 2, prize: 60, photo: "/alice.jpg" },
+    { id: 17, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
+    // ... add more data /for top 10
   ];
 
   // Sort leaderboard data by prize in descending order
@@ -33,7 +43,7 @@ const Leaderboard = () => {
   const remainingData = sortedData.slice(3);
 
   return (
-    <div className="container mx-auto px-6 py-12 rounded-lg shadow-lg">
+    <div className="container mx-auto px-6 py-12 rounded-lg shadow-lg ">
       {/* Leaderboard Heading */}
       <h1 className="text-4xl font-bold text-center mb-8">Leaderboard</h1>
 
@@ -59,11 +69,12 @@ const Leaderboard = () => {
         ))}
       </div>
 
+      
       {/* Top Ten Table */}
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-h-96 ">
         <table className="min-w-full bg-white border-collapse border border-gray-300 rounded-lg overflow-hidden shadow-md">
-          <thead>
-            <tr className="bg-gray-800 text-white">
+          <thead >
+            <tr className="bg-gray-800 text-white sticky top-0">
               <th className="border border-gray-300 px-4 py-2">Rank</th>
               <th className="border border-gray-300 px-4 py-2">Name</th>
               <th className="border border-gray-300 px-4 py-2">

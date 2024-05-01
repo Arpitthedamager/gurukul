@@ -1,9 +1,18 @@
+"use client";
 import Footer from "@/app/components/client-only/footer/Footer";
 import Navbar from "@/app/components/client-only/nevbar/Navbar";
 import React from "react";
-import Image from "next/image";
-
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useEffect, useRef, useState } from "react";
 const SubscriptionPackage = () => {
+  const { status: data, data: session } = useSession();
+  const router = useRouter();
+  useEffect(()=>{
+    if(!session){
+      router.replace("/login");
+    }
+  }, [session, router])
   // Define dynamic data
   const subscriptionData = {
     title: "Silver Package",
@@ -42,12 +51,12 @@ const SubscriptionPackage = () => {
         <div className="flex flex-col lg:flex-row justify-center items-center mb-8 hover:scale-105 transition-transform duration-300">
           <div className="w-full lg:w-1/2 relative rounded-lg overflow-hidden shadow-md mb-4 lg:mb-0 transform transition-transform duration-300 hover:grayscale-0">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-sky-500 opacity-80 lg:opacity-100 transition-opacity duration-300"></div>
-            <Image
+            <img
               src={subscriptionData.imageSrc}
               alt="Subscription Package Image"
               className="w-full h-64 object-cover filter grayscale hover:grayscale-0 transition-filter duration-300"
-              width="0"
-              height="0"
+              width={300} // Replace with the actual width of your images
+              height={200}
             />
           </div>
           <div className="max-w-md text-center lg:w-1/2">

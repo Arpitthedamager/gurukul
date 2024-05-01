@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect} from "react";
 import Link from "next/link";
 
-const My_Courses = () => {
+const My_Courses = () => { 
   const coursesFromDB = [
     { id: 1, referCode: "ABC123" },
     { id: 3, referCode: "XYZ789" },
@@ -10,57 +11,57 @@ const My_Courses = () => {
   const coursesData = [
     {
       id: 1,
-      title: "Web Development",
+      title: "Elite Package",
       onelinedescription:
         "Master the art of web development with HTML, CSS, and JavaScript. Get access to live QnA support.",
-      image: "/bronze.jpeg",
-      level: "Bronze",
-      prize: "999",
+      image: "/elite.jpeg",
+      level: "Elite",
+      prize: " INR 999",
     },
     {
       id: 2,
-      title: "React Fundamentals",
+      title: "Bronze Package",
       onelinedescription:
         "Dive into the world of React and craft interactive UIs. Receive a Gurukul Skills certificate upon completion.",
       image: "/bronze.jpeg",
       level: "Bronze",
-      prize: "999",
+      prize: "INR 1499",
     },
     {
       id: 3,
-      title: "Node.js and Express",
+      title: "Silver Package",
       onelinedescription:
         "Build robust and scalable web applications with Node.js and Express. Elite level income potential.",
-      image: "/bronze.jpeg",
-      level: "Bronze",
-      prize: "999",
+      image: "/silver.jpeg",
+      level: "Silver",
+      prize: "INR 2199",
     },
     {
       id: 4,
-      title: "Python Programming",
+      title: "Gold Package",
       onelinedescription:
         "Unlock the power of Python and embark on your coding journey. Get certified with Gurukul Skills.",
-      image: "/platinum.jpeg",
-      level: "platinum",
-      prize: "1999",
+      image: "/gold.jpeg",
+      level: "gold",
+      prize: "INR 4299",
     },
     {
       id: 5,
-      title: "Data Science with Python",
+      title: "Platinum Package",
       onelinedescription:
         "Delve into data science and harness the potential of Python. Live QnA support available.",
       image: "/platinum.jpeg",
       level: "platinum",
-      prize: "1999",
+      prize: "INR 6999",
     },
     {
       id: 6,
-      title: "UI with Next.js",
+      title: "Diamond Package",
       onelinedescription:
         "Explore the world of UI design with Next.js and create captivating interfaces. Earn a Gurukul Skills certificate.",
-      image: "/platinum.jpeg",
-      level: "platinum",
-      prize: "1999",
+      image: "/diamond.jpeg",
+      level: "diamond",
+      prize: "INR 8999",
     },
     // Add other course objects here...
   ];
@@ -143,7 +144,7 @@ const My_Courses = () => {
               }`}
             >
               <div className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full ">
-                <Image
+                <img
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 md:h-64 object-cover shadow-md"

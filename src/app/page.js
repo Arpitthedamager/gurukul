@@ -1,7 +1,5 @@
-import React from "react";
 import Navbar from "./components/client-only/nevbar/Navbar";
 import Footer from "./components/client-only/footer/Footer";
-import MidSection from "./components/client-only/mid-section/Mid-section";
 import Leaderboard from "./components/client-only/leader_bord/Leader_Bord";
 import FeatureBox from "./components/client-only/featurebox/FeatureBox";
 import HeaderSec from "./components/client-only/headersec/HeaderSec";
@@ -15,15 +13,15 @@ export const metadata = {
 
 const HomePage = () => {
   return (
-    <div className="relative">
+  <div className="relative">
       <Navbar />
-      <div className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] overflow-hidden">
+      <div className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] overflow-hidden mt-16">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
           autoPlay
           loop
           muted
-        >
+          >
           <source src="/video.mp4" type="video/mp4" />
         </video>
         <HeaderSec />

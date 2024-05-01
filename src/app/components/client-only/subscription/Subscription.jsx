@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const My_subs = () => {
@@ -14,25 +13,24 @@ const My_subs = () => {
   const subscriptions = [
     {
       id: 1,
-      name: "Quantum Mastery",
-      imageSrc: "/elite.jpeg",
-      price: "$99",
-      description: "Dive into the quantum world with our expert-led course.",
+      name: "Basic",
+      imageSrc: "/basic.jpeg",
+      price: "INR 1999",
+      description: "Dive into the world of technology with our expert-led courses.",
     },
     {
       id: 2,
-      name: "AI Revolution",
-      imageSrc: "/elite.jpeg",
-      price: "$79",
-      description:
-        "Join the AI revolution and master cutting-edge technologies.",
+      name: "Premium",
+      imageSrc: "/Premium.jpeg",
+      price: "INR 2999",
+      description: "Join the financial revolution and master cutting-edge technologies.",
     },
     {
       id: 3,
-      name: "Data Science Essentials",
-      imageSrc: "/elite.jpeg",
-      price: "$69",
-      description: "Unlock the power of data with our comprehensive course.",
+      name: "Pro",
+      imageSrc: "/pro.jpeg",
+      price: "INR 3499",
+      description: "Unlock the power of passive income with our comprehensive course.",
     },
   ];
 
@@ -95,19 +93,16 @@ const My_subs = () => {
               </h4>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-              {subscriptionsToShow.map((subscription, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                >
-                  <div className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white">
+              {subscriptionsToShow.map((subscription) => (
+               
+                  <div key={subscription.id} className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white">
                     <div className="item-img h-72 overflow-hidden">
-                      <Image
+                      <img
                         src={subscription.imageSrc}
                         alt={subscription.name}
                         className="w-full h-full object-cover"
+                        width={300} // Replace with the actual width of your images
+                        height={200}
                       />
                     </div>
                     <div className="item-content p-6 bg-white">
@@ -126,7 +121,7 @@ const My_subs = () => {
                             className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                             onClick={() => handleBuyNow(subscription.id)}
                           >
-                            Start Learning
+                            View Packages
                           </button>
                         </Link>
                         <div className="flex justify-between items-center mt-4">
@@ -146,7 +141,6 @@ const My_subs = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
               ))}
             </div>
           </div>

@@ -12,17 +12,17 @@ const Disclaimer = () => {
             Disclaimer
           </h2>
 
-          <p className="text-gray-600 z-50 mb-4">
+          <p className="text-white z-50 mb-4">
             1. The sum that a client pays at Gurukul Skills site is just for the
             online courses gave in the Product bought by the client.
           </p>
 
-          <p className="text-gray-600 z-50 mb-4">
+          <p className="text-white z-50 mb-4">
             2. No amount is paid by the client to turn into an affiliate with
             Gurukul Skills.
           </p>
 
-          <p className="text-gray-600 z-50 mb-4">
+          <p className="text-white-600 z-50 mb-4">
             3. Although we make every effort to ensure that we accurately
             reflect all of the goods and services reviewed on this website and
             their income potential, it should be noted that earnings and income
@@ -32,7 +32,7 @@ const Disclaimer = () => {
             risk that individual earnings and income statements will vary.
           </p>
 
-          <p className="text-gray-600 z-50 mb-4">
+          <p className="text-white-600 z-50 mb-4">
             4. The purchase made by the consumer directly from the Gurukul
             Skills website or via the affiliate connection of the individual who
             referred the purchaser to the Gurukul Skills website for his / her
@@ -40,7 +40,7 @@ const Disclaimer = () => {
             whatsoever.
           </p>
 
-          <p className="text-gray-600 z-50 mb-4">
+          <p className="text-white-600 z-50 mb-4">
             5. Through use of our information, products and services should be
             focused on your own proper research and you acknowledge that Gurukul
             Skills is not responsible for any successes and failures of your
@@ -49,7 +49,7 @@ const Disclaimer = () => {
             on this website.
           </p>
 
-          <p className="text-gray-600 z-50">
+          <p className="text-white-600 z-50">
             There is no assurance that examples of past earnings can be
             duplicated in the future. We cannot guarantee your future results
             and/or success. There are some unknown risks in business and on the

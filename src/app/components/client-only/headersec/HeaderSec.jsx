@@ -20,7 +20,7 @@ const HeaderSec = () => {
   return (
     <section className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
       <h1 className="text-4xl md:text-6xl font-extrabold mb-4">
-        <strong>Gurucul Skills</strong>
+        <strong>Gurukul Skills</strong>
       </h1>
       {/* <Typewriter
         options={{
