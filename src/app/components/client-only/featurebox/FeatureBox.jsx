@@ -3,6 +3,7 @@ import React from "react";
 // import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const subscriptions = [
   {
@@ -66,6 +67,8 @@ const FeatureBox = () => {
                       src={subscription.imageSrc}
                       alt={subscription.name}
                       className="w-full h-full object-cover"
+                      width="0"
+                      height="0"
                     />
                   </div>
                   <div className="item-content p-6 bg-white">

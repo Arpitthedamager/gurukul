@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import My_Courses from "../components/client-only/mycourses/MyCourses";
 import Footer from "../components/client-only/footer/Footer";
+import Image from "next/image";
 
 // const titles = [
 //   "Ignite Your Passion with Our Elite Courses",
@@ -109,6 +110,8 @@ const CoursesPage = () => {
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 md:h-64 object-cover shadow-md"
+                  width="O"
+                  height="O"
                 />
                 <div className="p-6 md:p-8 bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-b-lg">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-4 md:mb-6 text-white">

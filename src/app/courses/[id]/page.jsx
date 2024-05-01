@@ -2,6 +2,7 @@
 import Footer from "@/app/components/client-only/footer/Footer";
 import Navbar from "@/app/components/client-only/nevbar/Navbar";
 import React from "react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 const SilverPackage = () => {
   const scriptLoadedRef = useRef(false);
@@ -89,6 +90,8 @@ const SilverPackage = () => {
                 src="/course_image.jpg"
                 alt="Course Image"
                 className="w-full h-64 object-cover filter grayscale hover:grayscale-0 transition-filter duration-300"
+                width="O"
+                height="O"
               />
             </div>
             <div className="max-w-md text-center lg:w-1/2">

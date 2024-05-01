@@ -1,6 +1,7 @@
 import Footer from "@/app/components/client-only/footer/Footer";
 import Navbar from "@/app/components/client-only/nevbar/Navbar";
 import React from "react";
+import Image from "next/image";
 
 const SubscriptionPackage = () => {
   // Define dynamic data
@@ -45,6 +46,8 @@ const SubscriptionPackage = () => {
               src={subscriptionData.imageSrc}
               alt="Subscription Package Image"
               className="w-full h-64 object-cover filter grayscale hover:grayscale-0 transition-filter duration-300"
+              width="0"
+              height="0"
             />
           </div>
           <div className="max-w-md text-center lg:w-1/2">
