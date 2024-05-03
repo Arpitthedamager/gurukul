@@ -3,11 +3,15 @@ import Footer from "@/app/components/client-only/footer/Footer";
 import Navbar from "@/app/components/client-only/nevbar/Navbar";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 const SubscriptionPackage = () => {
   const { status: data, data: session } = useSession();
   const router = useRouter();
+  const param = useParams();
+  const id = param.id;
+
   useEffect(()=>{
     if(!session){
       router.replace("/login");

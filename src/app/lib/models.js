@@ -7,7 +7,6 @@ const userSchema = new Schema(
     first_name: {
       type: String,
       required: true,
-      unique: true,
       min: 3,
       max: 25,
     },
@@ -23,6 +22,10 @@ const userSchema = new Schema(
     dob: {
       type: Date,
     },
+    bio: {
+      type: String,
+      default: "Hi i am a regular user of Gurukul skills",
+    },
     phone: {
       type: String,
     },
@@ -37,16 +40,32 @@ const userSchema = new Schema(
     },
     course: [
       {
-        courseid: String,
-        courses_refer: String,
+        courseid:{ type:Number,default:null},
+        courses_refer: {type:String,default:""},
       },
     ],
     Subscription: [
       {
-        Subscriptionid: String,
-        sub_refer: String,
+        Subscriptionid:{ type: Number, default:null},
+        sub_refer: {type:String,default:""},
       },
     ],
+    social: [
+      {
+        twitter: { type: String, default: "" },
+        facebook: { type: String, default: "" },
+        instagram: { type: String, default: "" },
+        linkedIn: { type: String, default: "" },
+      },
+    ],
+    refers: {
+      type: Number,
+      default: 0,
+    },
+    refercode: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

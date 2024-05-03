@@ -1,14 +1,16 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const My_subs = () => {
-  // Mock data for subscriptions from MongoDB
-  const subscriptionsFromDB = [
-    { id: 1, referCode: "ABC123" },
-    { id: 3, referCode: "XYZ789" },
-    // Other subscription objects...
-  ];
+  const { data: session } = useSession();
+
+  const subscriptionsFromDB = session && session.Subscription
+    ? session.Subscription.map((sub) => ({
+        id: parseInt(sub.Subscriptionid), // Update the property name
+        referCode: sub.sub_refer,
+      }))
+    : [];
 
   const subscriptions = [
     {
@@ -39,15 +41,31 @@ const My_subs = () => {
   useEffect(() => {
     filterSubscriptions();
   }, []);
-
   const filterSubscriptions = () => {
-    const filteredSubscriptions = subscriptions.filter((subscription) => {
-      return subscriptionsFromDB.some(
+    const filteredSubscriptions = subscriptions.map((subscription) => {
+      const foundSubscription = subscriptionsFromDB.find(
         (dbSubscription) => dbSubscription.id === subscription.id
       );
+      if (foundSubscription) {
+        return {
+          ...subscription,
+          blurred: false,
+        };
+      } else {
+        return {
+          ...subscription,
+          blurred: true,
+        };
+      }
     });
-    setSubscriptionsToShow(filteredSubscriptions);
+    
+    // Filter out the subscriptions that are not found in subscriptionsFromDB
+    const subscriptionsToShow = filteredSubscriptions.filter(subscription => !subscription.blurred);
+    
+    setSubscriptionsToShow(subscriptionsToShow);
   };
+  
+  
 
   const handleBuyNow = (subscriptionId) => {
     console.log(`Buying subscription with ID ${subscriptionId}`);
@@ -91,11 +109,22 @@ const My_subs = () => {
               <h4 className="text-center text-4xl md:text-5xl font-extrabold text-yellow-600">
                 <strong>My Subscriptions</strong>
               </h4>
+              {subscriptionsFromDB.length === 0 && (
+          <div className="text-center text-gray-500 my-8">
+            <p>You do not have any courses.</p>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 inline-block"
+              onClick={() => console.log("Buy Now clicked")}
+            >
+              Buy Now
+            </button>
+          </div>
+        )}
+
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
               {subscriptionsToShow.map((subscription) => (
-               
-                  <div key={subscription.id} className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white">
+                  <div key={subscription.id} className={`item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white ${subscription.blurred ? 'filter blur-lg' : ''}`}>
                     <div className="item-img h-72 overflow-hidden">
                       <img
                         src={subscription.imageSrc}
@@ -105,11 +134,11 @@ const My_subs = () => {
                         height={200}
                       />
                     </div>
-                    <div className="item-content p-6 bg-white">
+                    <div className="item-content p-6 bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-b-lg">
                       <h5 className="item-title text-2xl font-semibold mb-4 text-yellow-600">
                         <strong>{subscription.name}</strong>
                       </h5>
-                      <h6 className="item-subtitle text-lg text-yellow-500 mb-6">
+                      <h6 className="item-subtitle text-lg text-rose-500 mb-6">
                         {subscription.price}
                       </h6>
                       <p className="mbr-text text-base text-gray-700 mb-8">
@@ -118,22 +147,25 @@ const My_subs = () => {
                       <div className="item-footer">
                         <Link href={`/subcor/${subscription.id}`}>
                           <button
-                            className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
+                            className={`btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800 ${subscription.blurred ? 'pointer-events-none opacity-50' : ''}`}
                             onClick={() => handleBuyNow(subscription.id)}
+                            disabled={subscription.blurred}
                           >
                             View Packages
                           </button>
                         </Link>
                         <div className="flex justify-between items-center mt-4">
                           <button
-                            className="text-sm text-gray-500 hover:text-black focus:outline-none"
+                            className={`text-sm text-gray-500 hover:text-black focus:outline-none ${subscription.blurred ? 'pointer-events-none opacity-50' : ''}`}
                             onClick={() => handleCopy(subscription.id)}
+                            disabled={subscription.blurred}
                           >
                             Copy Code
                           </button>
                           <button
-                            className="text-sm text-gray-500 hover:text-black focus:outline-none"
+                            className={`text-sm text-gray-500 hover:text-black focus:outline-none ${subscription.blurred ? 'pointer-events-none opacity-50' : ''}`}
                             onClick={() => handleShare(subscription.id)}
+                            disabled={subscription.blurred}
                           >
                             Share Link
                           </button>

@@ -1,12 +1,22 @@
 
 import React, { useState, useEffect} from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const My_Courses = () => { 
-  const coursesFromDB = [
-    { id: 1, referCode: "ABC123" },
-    { id: 3, referCode: "XYZ789" },
-  ];
+  const { status: data, data: session } = useSession();
+  const coursesFromDB = session
+  ? session.course.map((course) => ({
+      id: parseInt(course.courseid), // Convert to integer if needed
+      referCode: course.courses_refer,
+    }))
+  : [];
+  
+console.log(coursesFromDB)
+  // const coursesFromDB = [
+  //   { id: 1, referCode: "ABC123" },
+  //   { id: 3, referCode: "XYZ789" },
+  // ];
 
   const coursesData = [
     {

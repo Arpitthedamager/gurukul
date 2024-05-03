@@ -1,92 +1,120 @@
 "use client";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Navbar from "@/app/components/client-only/nevbar/Navbar";
-import Footer from "@/app/components/client-only/footer/Footer";
-
+import Navbar from "../../components/client-only/nevbar/Navbar";
+import Footer from "../../components/client-only/footer/Footer";
+import { useParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 const My_sub = () => {
- 
+  const { status: data, data: session } = useSession();
+  const param = useParams();  
+  const id = param.id;
+  const coursesFromDB = session
+  ? session.course.map((course) => ({
+      id: parseInt(course.courseid), // Convert to integer if needed
+      referCode: course.courses_refer,
+    }))
+  : [];
+  
+
   const subcode = [
     { id: 1, referCode: "ABC123" },
-    { id: 3, referCode: "XYZ789" },
+    { id: 2, referCode: "XYZ789" },
+    { id: 4, referCode: "XYZ789" },
+    { id: 5, referCode: "XYZ789" },
+    { id: 6, referCode: "XYZ789" },
   ];
 
-  const coursesData = [
-    {
-      id: 1,
-      title: "Web Development",
+  const coursesData = (id) => {
+    if (id === "1") {
+      return {
+        id: 1,
+      title: "Elite Package",
       onelinedescription:
-        "Master the art of web development with HTML, CSS, and JavaScript. Get access to live QnA support.",
+        "Unleash your potential with essential skills. Dominate the digital realm and thrive with this comprehensive package for success.",
+      image: "/elite.jpeg",
+      level: "Elite",
+      prize: " INR 999",
+      };
+    } else if (id === "2") {
+      return {
+        id: 2,
+      title: "Bronze Package",
+      onelinedescription:
+        " Elevate your career with core skills. Empower your journey with this essential package for professional growth.",
       image: "/bronze.jpeg",
       level: "Bronze",
-      prize: "999",
-    },
-    {
-      id: 2,
-      title: "React Fundamentals",
+      prize: "INR 1499",
+      };
+    } else if (id === "3") {
+      return [
+        {
+          id: 3,
+      title: "Silver Package",
       onelinedescription:
-        "Dive into the world of React and craft interactive UIs. Receive a Gurukul Skills certificate upon completion.",
-      image: "/bronze.jpeg",
-      level: "Bronze",
-      prize: "999",
-    },
-    {
-      id: 3,
-      title: "Node.js and Express",
-      onelinedescription:
-        "Build robust and scalable web applications with Node.js and Express. Elite level income potential.",
-      image: "/bronze.jpeg",
-      level: "Bronze",
-      prize: "999",
-    },
-    {
-      id: 4,
-      title: "Python Programming",
-      onelinedescription:
-        "Unlock the power of Python and embark on your coding journey. Get certified with Gurukul Skills.",
-      image: "/platinum.jpeg",
-      level: "platinum",
-      prize: "1999",
-    },
-    {
-      id: 5,
-      title: "Data Science with Python",
-      onelinedescription:
-        "Delve into data science and harness the potential of Python. Live QnA support available.",
-      image: "/platinum.jpeg",
-      level: "platinum",
-      prize: "1999",
-    },
-    {
-      id: 6,
-      title: "UI with Next.js",
-      onelinedescription:
-        "Explore the world of UI design with Next.js and create captivating interfaces. Earn a Gurukul Skills certificate.",
-      image: "/platinum.jpeg",
-      level: "platinum",
-      prize: "1999",
-    },
+        "Transform your presence with advanced expertise. Dominate the digital landscape confidently with this comprehensive package for success.",
+      image: "/silver.jpeg",
+      level: "Silver",
+      prize: "INR 2199",
+        },
+        {
+          id: 4,
+          title: "Gold Package",
+          onelinedescription:
+            "Shape tomorrow's world with cutting-edge courses. Become a digital pioneer and innovate with this essential package for professional growth.",
+          image: "/gold.jpeg",
+          level: "gold",
+          prize: "INR 4299",
+        },
+        {
+          id: 5,
+          title: "Platinum Package",
+          onelinedescription:
+            "Propel career to new heights, conquer tech. Master essential skills and lead the pack with this comprehensive package for success.",
+          image: "/platinum.jpeg",
+          level: "platinum",
+          prize: "INR 6999",
+        },
+        {
+          id: 6,
+          title: "Diamond Package",
+          onelinedescription:
+            "Command the future, secure the top spot! Elevate your career and lead the way with this essential package for professional growth.",
+          image: "/diamond.jpeg",
+          level: "diamond",
+          prize: "INR 8999",
+        },
+      ];
+    }
     // Add other course objects here...
-  ];
+  };
 
   const [coursesToShow, setCoursesToShow] = useState([]);
 
   useEffect(() => {
     filterCourses();
-  }, []);
+  }, [id]);  // Trigger useEffect when id changes
 
   const filterCourses = () => {
-    if (subcode.length === 0) {
-      const blurredCourses = coursesData.map((course) => ({
-        ...course,
-        blurred: true,
-      }));
-      setCoursesToShow(blurredCourses);
+    if (id) {
+      const courseData = coursesData(id);
+      if (Array.isArray(courseData)) {
+        // If courseData is an array, filter courses based on subcode
+        const filteredCourses = courseData.filter((course) => {
+          return subcode.some((dbCourse) => dbCourse.id === course.id);
+        });
+        setCoursesToShow(filteredCourses);
+      } else {
+        // If courseData is not an array, check if it exists in subcode
+        const existsInSubcode = subcode.some((dbCourse) => dbCourse.id === courseData.id);
+        if (existsInSubcode) {
+          setCoursesToShow([courseData]);
+        } else {
+          setCoursesToShow([]);
+        }
+      }
     } else {
-      const filteredCourses = coursesData.filter((course) => {
-        return subcode.some((dbCourse) => dbCourse.id === course.id);
-      });
-      setCoursesToShow(filteredCourses);
+      setCoursesToShow([]);
     }
   };
 
@@ -121,13 +149,13 @@ const My_sub = () => {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div className="container mx-auto px-4 md:px-10 py-10 md:py-20">
         <h4 className="text-center text-5xl font-extrabold my-10 mb-16 text-yellow-600">
           <strong>My Package Links</strong>
         </h4>
 
-        {subcode.length === 0 && (
+        {coursesToShow.length === 0 && (
           <div className="text-center text-gray-500 my-8">
             <p>You do not have any courses.</p>
             <button
@@ -169,7 +197,7 @@ const My_sub = () => {
                   <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-8 ">
                     - {course.level} level income
                   </p>
-                  
+
                   <div className="flex justify-between items-center mt-4">
                     <button
                       className={`text-sm text-gray-300 hover:text-white focus:outline-none ${
@@ -200,7 +228,7 @@ const My_sub = () => {
           ))}
         </div>
       </div>
-          <Footer/>
+      <Footer />
     </>
   );
 };

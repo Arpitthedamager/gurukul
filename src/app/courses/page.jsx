@@ -2,27 +2,23 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/client-only/nevbar/Navbar";
 import { useSession } from "next-auth/react";
-// import Typewriter from "typewriter-effect";
 import Link from "next/link";
 import My_Courses from "../components/client-only/mycourses/MyCourses";
 import Footer from "../components/client-only/footer/Footer";
 import Image from "next/image";
 
+const CoursesPage = () => {
+  const { status: data, data: session } = useSession();
+  const coursesFromDB = session
+    ? session.course.map((course) => parseInt(course.courseid)) // Convert to integer if needed
+    : [];
 
-// const titles = [
-  //   "Ignite Your Passion with Our Elite Courses",
-  //   "Unlock Your Potential with Cutting-Edge Tech Courses",
-  //   "Explore the Future of Learning with Gurucul Skills",
-  // ];
-  
-  const CoursesPage = () => {
-  const { status: data, data: session } = useSession(); 
   const coursesData = [
     {
       id: 1,
       title: "Elite Package",
       onelinedescription:
-        "Master the art of web development with HTML, CSS, and JavaScript. Get access to live QnA support.",
+        "Unleash your potential with essential skills. Dominate the digital realm and thrive with this comprehensive package for success.",
       image: "/elite.jpeg",
       level: "Elite",
       prize: " INR 999",
@@ -31,7 +27,7 @@ import Image from "next/image";
       id: 2,
       title: "Bronze Package",
       onelinedescription:
-        "Dive into the world of React and craft interactive UIs. Receive a Gurukul Skills certificate upon completion.",
+        " Elevate your career with core skills. Empower your journey with this essential package for professional growth.",
       image: "/bronze.jpeg",
       level: "Bronze",
       prize: "INR 1499",
@@ -40,7 +36,7 @@ import Image from "next/image";
       id: 3,
       title: "Silver Package",
       onelinedescription:
-        "Build robust and scalable web applications with Node.js and Express. Elite level income potential.",
+        "Transform your presence with advanced expertise. Dominate the digital landscape confidently with this comprehensive package for success.",
       image: "/silver.jpeg",
       level: "Silver",
       prize: "INR 2199",
@@ -49,7 +45,7 @@ import Image from "next/image";
       id: 4,
       title: "Gold Package",
       onelinedescription:
-        "Unlock the power of Python and embark on your coding journey. Get certified with Gurukul Skills.",
+        "Shape tomorrow's world with cutting-edge courses. Become a digital pioneer and innovate with this essential package for professional growth.",
       image: "/gold.jpeg",
       level: "gold",
       prize: "INR 4299",
@@ -58,7 +54,7 @@ import Image from "next/image";
       id: 5,
       title: "Platinum Package",
       onelinedescription:
-        "Delve into data science and harness the potential of Python. Live QnA support available.",
+        "Propel career to new heights, conquer tech. Master essential skills and lead the pack with this comprehensive package for success.",
       image: "/platinum.jpeg",
       level: "platinum",
       prize: "INR 6999",
@@ -67,12 +63,14 @@ import Image from "next/image";
       id: 6,
       title: "Diamond Package",
       onelinedescription:
-        "Explore the world of UI design with Next.js and create captivating interfaces. Earn a Gurukul Skills certificate.",
+        "Command the future, secure the top spot! Elevate your career and lead the way with this essential package for professional growth.",
       image: "/diamond.jpeg",
       level: "diamond",
       prize: "INR 8999",
     },
   ];
+
+  const coursesToShow = coursesData.filter((course) => !coursesFromDB.includes(course.id));
 
   const handleBuyNow = (courseTitle) => {
     console.log(`Buying ${courseTitle}`);
@@ -85,20 +83,9 @@ import Image from "next/image";
         <h4 className="text-center text-5xl font-extrabold text-yellow-600 pt-14 md:py-8">
           <strong>Courses</strong>
         </h4>
-        {/* <p className="text-xl font-extrabold text-center mb-10 md:mb-20 text-white-600">
-          <Typewriter
-            options={{
-              strings: titles,
-              autoStart: true,
-              loop: true,
-              delay: 50,
-              deleteSpeed: 50,
-            }}
-          />
-        </p> */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-10 md:gap-20">
-          {coursesData.map((course, index) => (
+          {coursesToShow.map((course, index) => (
             <div
               key={course.id}
               initial={{ opacity: 0, y: 50 }}
@@ -130,9 +117,6 @@ import Image from "next/image";
                   <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-8 ">
                     - {course.level} level income
                   </p>
-                  <p className="text-2xl md:text-base text-rose-700 mb-4 md:mb-8 ">
-                    - {course.prize}
-                  </p>
 
                   <Link href={`/courses/${course.id}`}>
                     <button
@@ -148,9 +132,7 @@ import Image from "next/image";
           ))}
         </div>
       </div>
-      {session &&
-      <My_Courses />
-      }
+      {session && <My_Courses />}
       <Footer />
     </>
   );

@@ -1,5 +1,5 @@
-import { User } from "@/app/lib/models";
-import { connectToDB } from "@/app/lib/util";
+import { User } from "../../lib/models";
+import { connectToDB } from "../../lib/util";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
@@ -26,16 +26,27 @@ export async function POST(req) {
       state,
       course: [
         {
-          courseid: null,
-          courses_refer: null,
+          courseid: "",
+          courses_refer: "",
         },
       ],
       Subscription: [
         {
-          Subscriptionid: null,
-          sub_refer: null,
+          Subscriptionid: "",
+          sub_refer: "",
         },
       ],
+      social: [
+        {
+          twitter:"",
+          facebook:"" ,
+          instagram:"" ,
+          linkedIn:"" ,
+        },
+      ],
+      bio: "Hi i am a regular user of Gurukul skills",
+      refers:0,
+      refercode:'',
     });
 
     return NextResponse.json({ message: "User Registered" }, { status: 201 });

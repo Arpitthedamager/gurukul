@@ -478,6 +478,7 @@ function Registration() {
           >
             Register
           </button>
+          
           <div className=" mt-3 hidden bg-rose-500 text-white">
             <h2>user already exists Please change Email</h2>
           </div>

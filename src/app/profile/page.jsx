@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FaTwitter,
   FaFacebookF,
@@ -10,38 +10,86 @@ import {
 } from "react-icons/fa";
 import Navbar from "../components/client-only/nevbar/Navbar";
 import Footer from "../components/client-only/footer/Footer";
+import { useSession } from "next-auth/react";
 
 const ProfileCard = () => {
+  const { data: session } = useSession();
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: "Eleanor Pena",
-    username: "@eleanorpena",
-    id: "Oxc4c16a645_b21a",
-    followers: 1069,
-    bio: "Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork. Artist/ Creative Director by Day #NFT minting@ with FND night.",
-    joined: "May, 2021",
-    social: {
-      twitter: "twitter.com/eleanorpena",
-      facebook: "facebook.com/eleanorpena",
-      instagram: "instagram.com/eleanorpena",
-      linkedin: "linkedin.com/in/eleanorpena",
-    },
+    name: "",
+    email: "",
+    id: "",
+    refers: 0,
+    bio: "",
+    joined: "",
+    social: {},
+    state: "", // Adding gender field
+
   });
+  useEffect(() => {
+    const fetchData = async () => {
+      if (session?.user) {
+        setProfileData({
+          name: session.user.username || "",
+          email: session.user.email || "",
+          id: session.phone || "",
+          followers: session.phone || 0,
+          bio: session.bio || "",
+          joined: session.dob || "",
+          social: session.user.social || {},
+          gender: session.gender          || "", // Assigning gender value
+          state: session.state          || "", // Assigning gender value
+
+        });
+      }
+    };
+
+    fetchData();
+  }, [session]);
+  console.log(session);
+  // const { data: session } = useSession();
+  // const [isEditing, setIsEditing] = useState(false);
+  // const coursesFromDB = session
+  // ? session.course.map((course) => ({
+  //     id: parseInt(course.courseid), // Convert to integer if needed
+  //     referCode: course.courses_refer,
+  //   }))
+  // : [];
+  // const [profileData, setProfileData] = useState({
+  //   name: "Eleanor Pena",
+  //   email: "@eleanorpena",
+  //   id: "Oxc4c16a645_b21a",
+  //   followers: 1069,
+  //   bio: "Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork. Artist/ Creative Director by Day #NFT minting@ with FND night.",
+  //   joined: "May, 2021",
+  //   social: {
+  //     twitter: "twitter.com/eleanorpena",
+  //     facebook: "facebook.com/eleanorpena",
+  //     instagram: "instagram.com/eleanorpena",
+  //     linkedin: "linkedin.com/in/eleanorpena",
+  //   },
+  // });
 
   const [editProfileData, setEditProfileData] = useState({
     name: profileData.name,
-    username: profileData.username,
+    email: profileData.email,
     bio: profileData.bio,
     social: { ...profileData.social },
+    gender: profileData.gender, // Adding gender to editProfileData
+    state: profileData.state, // Adding gender to editProfileData
+
   });
 
   const handleEditProfile = () => {
     setProfileData({
       ...profileData,
       name: editProfileData.name,
-      username: editProfileData.username,
+      email: editProfileData.email,
       bio: editProfileData.bio,
       social: { ...editProfileData.social },
+      gender: editProfileData.gender, // Updating gender in profileData
+      state: editProfileData.state, // Updating gender in profileData
+
     });
     setIsEditing(false);
   };
@@ -84,13 +132,10 @@ const ProfileCard = () => {
                     alt="Profile Image"
                     onClick={() => fileInputRef.current.click()}
                   />
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    onChange={handleImageUpload}
-                  />
                   <button className="absolute inset-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full">
+
+                  <input ref={fileInputRef} type="file" className="absolute z-50 inset-0 w-full h-full opacity-0 cursor-pointer" onChange={handleImageUpload}>
+                  </input>
                     Change Photo
                   </button>
                 </div>
@@ -99,7 +144,7 @@ const ProfileCard = () => {
                     {profileData.name}
                   </h1>
                   <p className="text-sm text-gray-600">
-                    {profileData.username}
+                    {profileData.email}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
                     <input
@@ -119,7 +164,13 @@ const ProfileCard = () => {
                 </div>
               </div>
               <p className="text-lg font-semibold text-gray-900 mt-4">
-                {profileData.followers} Followers
+                {profileData.followers} refers
+              </p>
+              <p className="text-lg font-semibold text-gray-900 ">
+                State {profileData.state}
+              </p>
+              <p className="text-lg font-semibold text-rose-900 ">
+                {profileData.gender}
               </p>
               <button
                 className="btn btn-dark h-10 mt-2 bg-red-600 hover:bg-gray-500 ocus:outline-none text-gray-900 border-gray-300 rounded-md px-4 py-2 "
@@ -168,18 +219,34 @@ const ProfileCard = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label text-gray-700">Username</label>
+                    <label className="form-label text-gray-700">email</label>
                     <input
                       type="text"
                       className="form-input bg-gray-100 focus:outline-none border text-gray-900  border-gray-300 rounded-md px-4 py-2 w-full"
-                      value={editProfileData.username}
+                      value={editProfileData.email}
                       onChange={(e) =>
                         setEditProfileData({
                           ...editProfileData,
-                          username: e.target.value,
+                          email: e.target.value,
                         })
                       }
                     />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label text-gray-700">Gender</label>
+                    <select
+                      className="form-select bg-gray-100 focus:outline-none border text-gray-900 border-gray-300 rounded-md px-4 py-2 w-full"
+                      value={editProfileData.gender}
+                      onChange={(e) =>
+                        setEditProfileData({
+                          ...editProfileData,
+                          gender: e.target.value,
+                        })
+                      }
+                    >
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
                   </div>
                   <div className="form-group">
                     <label className="form-label text-gray-700">Bio</label>
