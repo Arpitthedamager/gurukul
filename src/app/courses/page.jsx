@@ -47,7 +47,7 @@ const CoursesPage = () => {
       onelinedescription:
         "Shape tomorrow's world with cutting-edge courses. Become a digital pioneer and innovate with this essential package for professional growth.",
       image: "/gold.jpeg",
-      level: "gold",
+      level: "Gold",
       prize: "INR 4299",
     },
     {
@@ -56,7 +56,7 @@ const CoursesPage = () => {
       onelinedescription:
         "Propel career to new heights, conquer tech. Master essential skills and lead the pack with this comprehensive package for success.",
       image: "/platinum.jpeg",
-      level: "platinum",
+      level: "Platinum",
       prize: "INR 6999",
     },
     {
@@ -65,7 +65,7 @@ const CoursesPage = () => {
       onelinedescription:
         "Command the future, secure the top spot! Elevate your career and lead the way with this essential package for professional growth.",
       image: "/diamond.jpeg",
-      level: "diamond",
+      level: "Diamond",
       prize: "INR 8999",
     },
   ];

@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Navbar from "../../components/client-only/nevbar/Navbar";
 import Footer from "../../components/client-only/footer/Footer";
+import Image from "next/image";
 
 const SilverPackage = () => {
   const scriptLoadedRef = useRef(false);
@@ -195,23 +196,26 @@ const SilverPackage = () => {
           "Valuable Bonuses",
         ],
         learnItems: [
+          "Ui Design Mastery",
+          "Artificial Intelligence",
           "Sales Funnel Creation",
           "Facebook Ads Mastery",
           "Spoken English Mastery",
           "Public Speaking Mastery",
           "Email Marketing Mastery",
-          "Communication Mastery",
+          "Communication Mastery ",
+          "Chat GPt and other A.I Tools ",
           "Advanced Affiliate Marketing",
         ],
-        img: "/bronze.jpeg",
+        img: "/gold.jpeg",
       };
-    } else if (courseId === "2") {
+    } else if (courseId === "5") {
       return {
-        title: "Bronze  Course",
+        title: "Platinum Package",
         description:
-          "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
-        price: 1499,
-        originalPrice: 2500,
+          "Designed specifically for students and entrepreneurs who aspire to be a digital marketer. With this course, now you can become a master of your own field. Covering a wide range of topics, now you can gain a lot of insight about the professional world. If you are someone who makes every possible effort to update themselves with the latest techniques, then this course is perfect for you. What are you waiting for? Get acquainted with the trending tools and latest technologies to make the best of your professional career.",
+        price: 3999,
+        originalPrice: 7000,
         includes: [
           { label: "100 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -220,26 +224,29 @@ const SilverPackage = () => {
           { label: "Certificate of Completion", icon: "🎓" },
         ],
         overviewDescription:
-          "Overview for Bronze Package Unlock a world of opportunities with our carefully curated Bronze Course Bundle, designed to equip you with essential skills that are indispensable in today's professional landscape. Whether you're a student looking to bolster your resume or a seasoned professional aiming to enhance your proficiency, this comprehensive package has something for everyone. We've carefully selected courses that cover essential skills demanded by employers across industries. With hands-on training and practical insights, you'll be well-prepared for real-world challenges. Our courses are led by industry experts who bring their knowledge and experience to the virtual classroom, ensuring you receive top-notch education. We believe in making quality education accessible to all. The Bronze Course Bundle offers incredible value for your investment in personal and professional growth. Take the first step toward a brighter future with Gurukul Skills.",
+          "In the ever-changing world, it is quintessential to equip yourself with the latest marketing trends to mark your strong foothold in the professional environment. Gurukul Skills makes you understand the most significant concepts of digital marketing with utmost interest. If you want to gain in-depth knowledge of digital marketing, then this course is for you.",
         otherBenefits: [
           "Huge Commission On Every Referral upto 87%",
           "Access To All Live Training",
           "Valuable Bonuses",
         ],
         learnItems: [
-          "Ms Word Course",
-          "Ms Excel Course",
-          "Time Management",
-          "Comunication Skills",
-          "Ms Powerpoint Course",
-          "Interview Mastery Course",
-          "Freelancing Mastery Course",
+          "Ui Design Mastery",
+          "Artificial Intelligence",
+          "Sales Funnel Creation",
+          "Facebook Ads Mastery",
+          "Spoken English Mastery",
+          "Public Speaking Mastery",
+          "Email Marketing Mastery",
+          "Communication Mastery ",
+          "Chat GPt and other A.I Tools ",
+          "Advanced Affiliate Marketing",
         ],
         img: "/bronze.jpeg",
       };
-    } else if (courseId === "2") {
+    } else if (courseId === "6") {
       return {
-        title: "Bronze  Course",
+        title: "Diamond  Package",
         description:
           "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
         price: 1499,
@@ -294,7 +301,7 @@ const SilverPackage = () => {
           <div className="flex flex-col lg:flex-row justify-center items-center mb-12 hover:scale-105 transition-transform duration-300">
             <div className="w-full lg:w-1/2 relative rounded-lg overflow-hidden shadow-md mb-4 lg:mb-0 transform transition-transform duration-300 hover:grayscale-0">
               {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-sky-500 opacity-80 lg:opacity-100 transition-opacity duration-300"></div> */}
-              <img
+              <img 
                 src={courseData.img}
                 alt="Course Image"
                 className="w-full h-64 object-cover hover:grayscale-0 transition-filter duration-300"

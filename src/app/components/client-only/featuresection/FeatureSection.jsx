@@ -8,13 +8,13 @@ const FeaturesSection = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-center md:justify-between gap-8">
             <h4 className="text-4xl font-bold">
-              <strong>100K+ Happy Learners</strong>
+              <strong>10K+ Happy Learners</strong>
             </h4>
             <h4 className="text-4xl font-bold">
-              <strong>500+ Courses Available</strong>
+              <strong>100+ Courses Available</strong>
             </h4>
             <h4 className="text-4xl font-bold">
-              <strong>24/7 Support Team Ready</strong>
+              <strong>24/7 Support Team</strong>
             </h4>
           </div>
         </div>
@@ -25,7 +25,7 @@ const FeaturesSection = () => {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
           <Image
             className="rounded-md"
-            src="/book.jpeg"
+            src="/members.jpeg"
             width={500}
             height={500}
             alt="Picture of the author"
@@ -47,7 +47,7 @@ const FeaturesSection = () => {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
           <Image
             className="rounded-md md:order-last"
-            src="/book.jpeg"
+            src="/user.jpeg"
             width={500}
             height={500}
             alt="Picture of the author"
@@ -69,7 +69,7 @@ const FeaturesSection = () => {
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
           <Image
             className="rounded-md"
-            src="/book.jpeg"
+            src="/marketplace.jpeg"
             width={500}
             height={500}
             alt="Picture of the author"

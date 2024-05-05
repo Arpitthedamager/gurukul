@@ -5,21 +5,21 @@ import { useState } from "react";
 const Leaderboard = () => {
   // Sample leaderboard data
   const leaderboardData = [
-    { id: 1, name: "John", referrals: 5, prize: 50, photo: "/pop.webp" },
-    { id: 2, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
-    { id: 3, name: "Doe", referrals: 3, prize: 30, photo: "/book.jpeg" },
-    { id: 4, name: "Alice", referrals: 2, prize: 60, photo: "/pop.webp" },
-    { id: 5, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
-    { id: 6, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
-    { id: 7, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
-    { id: 8, name: "Alice", referrals: 2, prize: 60, photo: "/alice.jpg" },
-    { id: 9, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
-    { id: 0, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
-    { id: 11, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
-    { id: 12, name: "Alice", referrals: 2, prize: 60, photo: "/pop.webp" },
-    { id: 13, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
-    { id: 14, name: "Jane", referrals: 4, prize: 40, photo: "/jane.jpg" },
-    { id: 15, name: "Doe", referrals: 3, prize: 30, photo: "/doe.jpg" },
+    { id: 1, name: "Abhishek Singh", referrals: 154, prize: 1000000, photo: "/pop.webp" },
+    { id: 2, name: "Arpit Gupta", referrals: 136, prize: 500000, photo: "/jane.jpg" },
+    { id: 3, name: "Uday Chauhan", referrals: 124, prize: 200000, photo: "/book.jpeg" },
+    { id: 4, name: "Shivang ", referrals: 118, prize: 100000, photo: "/pop.webp" },
+    { id: 5, name: "Rahul Bhagel", referrals: 112, prize: 50000, photo: "/bob.jpg" },
+    { id: 6, name: "Jane zaid", referrals: 108, prize: 30000, photo: "/jane.jpg" },
+    { id: 7, name: "Doj kabir", referrals: 98, prize: 20000, photo: "/doe.jpg" },
+    { id: 8, name: "Diksha", referrals: 94, prize: 10000, photo: "/alice.jpg" },
+    { id: 9, name: "Bob Sharma", referrals: 85, prize: 8000, photo: "/bob.jpg" },
+    { id: 0, name: "Sonu ", referrals: 81, prize: 6000, photo: "/jane.jpg" },
+    { id: 11, name: "Sahil Khanna", referrals: 78, prize: 5000, photo: "/doe.jpg" },
+    { id: 12, name: "Nisha kalan", referrals: 75, prize: 5000, photo: "/pop.webp" },
+    { id: 13, name: "Bobby ", referrals: 74, prize: 5000, photo: "/bob.jpg" },
+    { id: 14, name: "kannnu", referrals: 68, prize: 5000, photo: "/jane.jpg" },
+    { id: 15, name: "Nikita Jain", referrals: 62, prize: 5000, photo: "/doe.jpg" },
     { id: 16, name: "Alice", referrals: 2, prize: 60, photo: "/alice.jpg" },
     { id: 17, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
     // ... add more data /for top 10
@@ -64,7 +64,7 @@ const Leaderboard = () => {
             </div>
             <h2 className="text-xl font-semibold">{user.name}</h2>
             <p className="text-sm">Referrals: {user.referrals}</p>
-            <p className="text-sm">Prize: ${user.prize}</p>
+            <p className="text-sm">Prize: ₹ {user.prize}</p>
           </div>
         ))}
       </div>
@@ -103,7 +103,7 @@ const Leaderboard = () => {
                   {user.referrals}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  ${user.prize}
+                ₹ {user.prize}
                 </td>
               </tr>
             ))}

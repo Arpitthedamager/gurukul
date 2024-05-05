@@ -45,10 +45,10 @@ const Footer = () => {
               </li>
               <li className="mb-3">
                 <a
-                  href="/policy"
+                  href="/bilog"
                   className="hover:text-gray-300 transition duration-300"
                 >
-                  Policy
+                  blog
                 </a>
               </li>
               <li className="mb-3">
