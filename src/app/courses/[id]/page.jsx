@@ -1,10 +1,10 @@
+// app/courses/[id]/page.jsx
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Navbar from "../../components/client-only/nevbar/Navbar";
 import Footer from "../../components/client-only/footer/Footer";
-import { useParams } from "next/navigation";
 
 const SilverPackage = () => {
   const scriptLoadedRef = useRef(false);
@@ -14,10 +14,11 @@ const SilverPackage = () => {
   const param = useParams();
   // Define courseId from params
   const id = param.id;
-  console.log(id);
+  const email = session.user.email;
+  console.log(email);
 
   // Define side effects using useEffect
-  
+
   useEffect(() => {
     // Dynamically load Razorpay script based on courseId
     if (!scriptLoadedRef.current && id) {
@@ -25,53 +26,192 @@ const SilverPackage = () => {
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
       script.async = true;
       script.dataset.payment_button_id =
-      id === "1"
-      ? "pl_O1lSJYOUZy2XIZ"
-      : "pl_O626nJcqnawAkg";
+        id === "1" ? "pl_O1lSJYOUZy2XIZ" : "pl_O626nJcqnawAkg";
       script.onload = () => {
         scriptLoadedRef.current = true;
       };
       document.getElementById("razorpay-button-container").appendChild(script);
     }
   }, [id]); // Trigger effect when id changes
-  useEffect(() => {
-    // Redirect to login page if session is not available
-    if (!session) {
-      router.replace("/login");
+  // useEffect(() => {
+  //   // Redirect to login page if session is not available
+  //   if (!session) {
+  //     router.replace("/login");
+  //   }
+  // }, [session, router]);
+  const handleAddCourse = async () => {
+    try {
+      const data = {
+        email,
+        courseId: id,
+      };
+      console.log("fuck", data);
+      const response = await fetch("../../api/courses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add course. Server responded with error.");
+      }
+
+      const responseData = await response.text();
+      if (responseData) {
+        const jsonData = JSON.parse(responseData);
+        console.log(jsonData);
+        // Handle the JSON data
+      } else {
+        console.log("fuck");
+        // Handle empty response
+      }
+      console.log(responseData.message); // Assuming the backend API returns a success message
+    } catch (error) {
+      console.error("There was a problem with the request:", error);
+      setErrorMessage("Failed to add course. Please try again later.");
     }
-  }, [session, router]);
+  };
 
   // Define function to fetch course data based on id
   const fetchCourseData = (courseId) => {
     // Define course data based on courseId
     if (courseId === "1") {
       return {
-        title: "Silver Course",
-        description: "Description of Silver Course",
-        price: 3499,
-        originalPrice: 3999,
+        title: "Elite Package",
+        description:
+          "The Affiliate Elite Package provides comprehensive tools and strategies for maximizing affiliate marketing success. With advanced analytics, targeted training, and exclusive resources, it empowers affiliates to optimize their campaigns and boost their earnings to the next level.",
+        price: 999,
+        originalPrice: 1499,
         includes: [
-          { label: "52 hours on-demand video", icon: "🎥" },
+          { label: "20 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
           { label: "Access on mobile and TV", icon: "📱" },
           { label: "Assignments", icon: "📝" },
           { label: "Certificate of Completion", icon: "🎓" },
         ],
-        overviewDescription: "Overview description of Silver Course",
+        overviewDescription: "Overview description of Elite Course",
         otherBenefits: [
-          "Huge Commission On Every Referral",
+          "Huge Commission On Every Referral upto 87%",
           "Access To All Live Training",
           "Valuable Bonuses",
         ],
+        learnItems: [
+          "Networking",
+          "Mentorship",
+          "Technical Skills",
+          "Online Growth Coaching",
+          "Basic Financial Management",
+        ],
         img: "/elite.jpeg",
-
       };
     } else if (courseId === "2") {
       return {
-        title: "Elite Course",
-        description: "Description of Elite Course",
-        price: 4999,
-        originalPrice: 5999,
+        title: "Bronze  Package",
+        description:
+          "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
+        price: 1499,
+        originalPrice: 2500,
+        includes: [
+          { label: "40 hours on-demand video", icon: "🎥" },
+          { label: "Full lifetime access", icon: "🔓" },
+          { label: "Access on mobile and TV", icon: "📱" },
+          { label: "Assignments and quizzes", icon: "📝" },
+          { label: "Certificate of Completion", icon: "🎓" },
+        ],
+        overviewDescription:
+          "Overview for Bronze Package Unlock a world of opportunities with our carefully curated Bronze Course Bundle, designed to equip you with essential skills that are indispensable in today's professional landscape. Whether you're a student looking to bolster your resume or a seasoned professional aiming to enhance your proficiency, this comprehensive package has something for everyone. We've carefully selected courses that cover essential skills demanded by employers across industries. With hands-on training and practical insights, you'll be well-prepared for real-world challenges. Our courses are led by industry experts who bring their knowledge and experience to the virtual classroom, ensuring you receive top-notch education. We believe in making quality education accessible to all. The Bronze Course Bundle offers incredible value for your investment in personal and professional growth. Take the first step toward a brighter future with Gurukul Skills.",
+        otherBenefits: [
+          "Huge Commission On Every Referral upto 87%",
+          "Access To All Live Training",
+          "Valuable Bonuses",
+        ],
+        learnItems: [
+          "Ms Word Course",
+          "Ms Excel Course",
+          "Time Management",
+          "Comunication Skills",
+          "Ms Powerpoint Course",
+          "Interview Mastery Course",
+          "Freelancing Mastery Course",
+        ],
+        img: "/bronze.jpeg",
+      };
+    } else if (courseId === "3") {
+      return {
+        title: "Silver Package",
+        description:
+          "This course is designed to help you build a strong narrative in the professional realm. If you want to make your career in social media marketing, then this course is for you. Having a wide range of topics, this course makes you a prominent leader in the business sector. From enhancing your professional skills to improving your mental flexibility, this course is going to be a game-changer for your overall growth.",
+        price: 1999,
+        originalPrice: 2999,
+        includes: [
+          { label: "60 hours on-demand video", icon: "🎥" },
+          { label: "Full lifetime access", icon: "🔓" },
+          { label: "Access on mobile and TV", icon: "📱" },
+          { label: "Assignments and quizzes", icon: "📝" },
+          { label: "Certificate of Completion", icon: "🎓" },
+        ],
+        overviewDescription:
+          "Who doesn't love to make a strong social media presence? If you are an entrepreneur or a beginner who dreams to create a revolutionary impact then this package best fits your needs. With this course, now you can be confident in making a difference and learning social media trends that help you stand out.",
+        otherBenefits: [
+          "Huge Commission On Every Referral upto 87%",
+          "Access To All Live Training",
+          "Valuable Bonuses",
+        ],
+        learnItems: [
+          "Finance",
+          "Facebook ADS",
+          "Digital Marketing",
+          "Affiliate Marketing",
+          "Social Media Mastery",
+          "Personal Development",
+          "VN Mobile Video Editing",
+          "Content Creation Mastery",
+          "Instagram Growth Mastery",
+          "Organic Affiliate Marketing",
+        ],
+        img: "/silver.jpeg",
+      };
+    } else if (courseId === "4") {
+      return {
+        title: "Gold Course",
+        description:
+          "With the ever-evolving industry, upgrading yourself to the latest trends and technologies is necessary. This package is designed to impart the learners with essential soft skills. To bring a transformation in your field of expertise requires an evidence-based teaching pedagogy that is best suited for your professional and personal growth. This course package will help you to reach your ultimate goal and receive satisfactory results in your personality in a short span of time.",
+        price: 2999,
+        originalPrice: 5000,
+        includes: [
+          { label: "85 hours on-demand video", icon: "🎥" },
+          { label: "Full lifetime access", icon: "🔓" },
+          { label: "Access on mobile and TV", icon: "📱" },
+          { label: "Assignments and quizzes", icon: "📝" },
+          { label: "Certificate of Completion", icon: "🎓" },
+        ],
+        overviewDescription:
+          "Nothing comes easy as the saying goes. It takes a lot of effort to manifest your footing in the professional industry. With everyone competing to make it to the top, it becomes essential to upgrade yourself with the necessary skill set for your growth. Gurukul introduces you to a variety of courses that help you in taking your career to a higher level. This course covers everything from teaching Personality Development, Communication Skills, Spoken English Mastery, Interview Mastery, Leadership, and Time Management, and How to network with people. So what are you waiting for? This is your opportunity to become a leader of your realm.",
+        otherBenefits: [
+          "Huge Commission On Every Referral upto 87%",
+          "Access To All Live Training",
+          "Valuable Bonuses",
+        ],
+        learnItems: [
+          "Sales Funnel Creation",
+          "Facebook Ads Mastery",
+          "Spoken English Mastery",
+          "Public Speaking Mastery",
+          "Email Marketing Mastery",
+          "Communication Mastery",
+          "Advanced Affiliate Marketing",
+        ],
+        img: "/bronze.jpeg",
+      };
+    } else if (courseId === "2") {
+      return {
+        title: "Bronze  Course",
+        description:
+          "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
+        price: 1499,
+        originalPrice: 2500,
         includes: [
           { label: "100 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -79,21 +219,55 @@ const SilverPackage = () => {
           { label: "Assignments and quizzes", icon: "📝" },
           { label: "Certificate of Completion", icon: "🎓" },
         ],
-        overviewDescription: "Overview description of Elite Course",
+        overviewDescription:
+          "Overview for Bronze Package Unlock a world of opportunities with our carefully curated Bronze Course Bundle, designed to equip you with essential skills that are indispensable in today's professional landscape. Whether you're a student looking to bolster your resume or a seasoned professional aiming to enhance your proficiency, this comprehensive package has something for everyone. We've carefully selected courses that cover essential skills demanded by employers across industries. With hands-on training and practical insights, you'll be well-prepared for real-world challenges. Our courses are led by industry experts who bring their knowledge and experience to the virtual classroom, ensuring you receive top-notch education. We believe in making quality education accessible to all. The Bronze Course Bundle offers incredible value for your investment in personal and professional growth. Take the first step toward a brighter future with Gurukul Skills.",
         otherBenefits: [
-          "Huge Commission On Every Referral",
+          "Huge Commission On Every Referral upto 87%",
           "Access To All Live Training",
           "Valuable Bonuses",
         ],
         learnItems: [
-          "Learn Item 1",
-          "Learn Item 2",
-          "Learn Item 3",
-          "Learn Item 4",
-          "Learn Item 5",
-          "Learn Item 6",
+          "Ms Word Course",
+          "Ms Excel Course",
+          "Time Management",
+          "Comunication Skills",
+          "Ms Powerpoint Course",
+          "Interview Mastery Course",
+          "Freelancing Mastery Course",
         ],
-        img: "/elite.jpeg",
+        img: "/bronze.jpeg",
+      };
+    } else if (courseId === "2") {
+      return {
+        title: "Bronze  Course",
+        description:
+          "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
+        price: 1499,
+        originalPrice: 2500,
+        includes: [
+          { label: "100 hours on-demand video", icon: "🎥" },
+          { label: "Full lifetime access", icon: "🔓" },
+          { label: "Access on mobile and TV", icon: "📱" },
+          { label: "Assignments and quizzes", icon: "📝" },
+          { label: "Certificate of Completion", icon: "🎓" },
+        ],
+        overviewDescription:
+          "Overview for Bronze Package Unlock a world of opportunities with our carefully curated Bronze Course Bundle, designed to equip you with essential skills that are indispensable in today's professional landscape. Whether you're a student looking to bolster your resume or a seasoned professional aiming to enhance your proficiency, this comprehensive package has something for everyone. We've carefully selected courses that cover essential skills demanded by employers across industries. With hands-on training and practical insights, you'll be well-prepared for real-world challenges. Our courses are led by industry experts who bring their knowledge and experience to the virtual classroom, ensuring you receive top-notch education. We believe in making quality education accessible to all. The Bronze Course Bundle offers incredible value for your investment in personal and professional growth. Take the first step toward a brighter future with Gurukul Skills.",
+        otherBenefits: [
+          "Huge Commission On Every Referral upto 87%",
+          "Access To All Live Training",
+          "Valuable Bonuses",
+        ],
+        learnItems: [
+          "Ms Word Course",
+          "Ms Excel Course",
+          "Time Management",
+          "Comunication Skills",
+          "Ms Powerpoint Course",
+          "Interview Mastery Course",
+          "Freelancing Mastery Course",
+        ],
+        img: "/bronze.jpeg",
       };
     }
 
@@ -138,6 +312,9 @@ const SilverPackage = () => {
               <form id="razorpay-button-container"></form>
             </div>
           </div>
+          <button className=" bg-black" onClick={handleAddCourse}>
+            add courses
+          </button>
           {errorMessage && (
             <div className="text-center mb-4 text-red-600">{errorMessage}</div>
           )}

@@ -2,6 +2,48 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
+const transactionSchema = new Schema({
+  amount: {
+    type: Number,
+    required: true,
+  },
+  upiId: {
+    type: String,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
+const courseSchema = new Schema({
+  courseid: {
+    type: Number,
+  },
+  courses_refer: {
+    type: String,
+    default: "",
+  },
+});
+const SubscriptionSchema = new Schema({
+  Subscriptionid: {
+    type: Number,
+  },
+  Subscription_refer: {
+    type: String,
+    default: "",
+  },
+});
+const SubcourseSchema = new Schema({
+  Subcourseid: {
+    type: Number,
+  },
+  Subcourse_refer: {
+    type: String,
+    default: "",
+  },
+});
+
 const userSchema = new Schema(
   {
     first_name: {
@@ -38,18 +80,8 @@ const userSchema = new Schema(
     state: {
       type: String,
     },
-    course: [
-      {
-        courseid:{ type:Number,default:null},
-        courses_refer: {type:String,default:""},
-      },
-    ],
-    Subscription: [
-      {
-        Subscriptionid:{ type: Number, default:null},
-        sub_refer: {type:String,default:""},
-      },
-    ],
+    course: { type: [courseSchema], default: [] },
+    Subscription: { type: [SubscriptionSchema], default: [] },
     social: [
       {
         twitter: { type: String, default: "" },
@@ -66,6 +98,16 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
+    current_balance: {
+      type: Number,
+      default: 0,
+    },
+    total_balance: {
+      type: Number,
+      default: 0,
+    },
+    Transaction: { type: [transactionSchema], default: [] },
+    Subcourse: { type: [SubcourseSchema], default: [] }
   },
   {
     timestamps: true,

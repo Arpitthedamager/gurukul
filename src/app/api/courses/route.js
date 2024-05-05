@@ -1,28 +1,63 @@
-// pages/api/courses.js
-// Import your User model
+//working but with defult
+import { User } from "../../lib/models";
+import { connectToDB } from "../../lib/util";
+import { NextResponse } from "next/server";
 
-import { User } from "@/app/lib/models";
+const defaultTransaction = {
+  email: "arpitthekumar37@gmail.com",
+  courseId: 2,
+};
+export async function POST(req, res) {
+  // Your POST method logic here
+  // Ensure MongoDB connection
+  await connectToDB();
 
-export default async function handler(req, res) {
-  if (req.method !== "GET") {
-    return res.status(405).end(); // Method Not Allowed
-  }
+  if (req.method === "POST") {
+    try {
+      // Extract necessary data from the request body
+      // const { email, courseId } = req.body;
+      const { email, courseId } =  defaultTransaction;
+      console.log("Received data:", req.body);
+      console.log(email)
+      console.log(courseId)
+      // Generate the courseRefer here (for demonstration purposes, generating a random string)
+      const courseRefer = generateCourseRefer();
+      const courseid = parseInt(courseId);
 
-  const userId = req.query.userId;
 
-  try {
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      // Fetch the user from the database based on the email
+      const user = await User.findOne({ email:email });
+      console.log(courseid)
+
+      if (!user) {
+        return NextResponse.json({ error: "User not found" }, {status: 404}); 
+      }
+      user.course.push({courseid:courseid, courses_refer:courseRefer });
+      console.log(courseid,courseRefer)
+
+      // Update the user's document with the purchased course details and the generated referral code
+      // user.course = { courseId, courses_refer: courseRefer };
+
+      // Save the updated user document
+      await user.save();
+
+      // Return a success response
+      return NextResponse.json({ message: "Course added successfully" }, {status: 200});
+    } catch (error) {
+      console.error(error);
+      return NextResponse.json({ error: "Internal server error" }, {status: 500});
     }
-    // Extract courses data from the user object and send it in the response
-    const coursesFromDB = user.course.map((course) => ({
-      id: course.courseid,
-      referCode: course.courses_refer,
-    }));
-    res.json(coursesFromDB);
-  } catch (error) {
-    console.error("Error fetching user courses:", error);
-    res.status(500).json({ error: "Internal server error" });
+  } else {
+    return NextResponse.json({ error: "Method not allowed" }, {status: 405}); 
   }
+}
+
+// Function to generate a random alphanumeric string for courseRefer
+function generateCourseRefer() {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let courseRefer = "";
+  for (let i = 0; i < 6; i++) {
+    courseRefer += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return courseRefer;
 }

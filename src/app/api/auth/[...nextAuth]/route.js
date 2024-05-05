@@ -51,8 +51,11 @@ export const authOptions = {
         token.bio = user.bio;
         token.refers = user.refers;
         token.refercode = user.refercode;
+        token.Transaction = user.Transaction;
+        token.current_balance = user.current_balance;
+        token.total_balance = user.total_balance;
         token.social = user.social;
-
+        token.Subcourse = user.Subcourse;
 
 
       }
@@ -73,6 +76,10 @@ export const authOptions = {
         session.refercode = token.refercode;
         session.refers = token.refers;
         session.social = token.social;
+        session.Transaction = token.Transaction;
+        session.current_balance = token.current_balance;
+        session.total_balance = token.total_balance;
+        session.Subcourse = token.Subcourse;
 
       }
       return session;

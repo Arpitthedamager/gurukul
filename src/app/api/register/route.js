@@ -24,17 +24,11 @@ export async function POST(req) {
       phone,
       password: hashedPassword,
       state,
+      cucurrent_balance:0,
+      total_balance:0,
       course: [
-        {
-          courseid: "",
-          courses_refer: "",
-        },
       ],
       Subscription: [
-        {
-          Subscriptionid: "",
-          sub_refer: "",
-        },
       ],
       social: [
         {
@@ -47,6 +41,8 @@ export async function POST(req) {
       bio: "Hi i am a regular user of Gurukul skills",
       refers:0,
       refercode:'',
+      Transaction:[],
+      Subcourse:[]
     });
 
     return NextResponse.json({ message: "User Registered" }, { status: 201 });

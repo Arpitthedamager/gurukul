@@ -23,7 +23,7 @@ const Policy = () => {
         <p className="text-white z-50 mb-4">
           3. No Refund will be given to the customer for the purchase of any
           package made by the customer directly from the
-          "www.gurukulskills.site" or through the affiliate link of the person
+          www.gurukulskills.site or through the affiliate link of the person
           who referred him to the Gurukulskills website after 2 hours of the
           purchase under any circumstances.
         </p>
@@ -45,7 +45,7 @@ const Policy = () => {
           No refund request will be accepted without above mentioned details.
         </p>
         <p className="text-rose-500 z-50">
-          Please note that for the "Refund" you need to mail us only at
+          Please note that for the Refund you need to mail us only at
           gurukulskills57@gmail.com
         </p>
       </div>
