@@ -21,12 +21,12 @@ const SilverPackage = () => {
     console.log(email);
   }
   console.log(id, email)
-  useEffect(() => {
-    // Redirect to login page if session is not available
-    if (!session) {
-      router.replace("/login");
-    }
-  }, [session, router]);
+  // useEffect(() => {
+  //   // Redirect to login page if session is not available
+  //   if (!session) {
+  //     router.replace("/login");
+  //   }
+  // }, [session, router]);
 
   // Define side effects using useEffect
 
@@ -148,8 +148,8 @@ const SilverPackage = () => {
         title: "Silver Package",
         description:
           "This course is designed to help you build a strong narrative in the professional realm. If you want to make your career in social media marketing, then this course is for you. Having a wide range of topics, this course makes you a prominent leader in the business sector. From enhancing your professional skills to improving your mental flexibility, this course is going to be a game-changer for your overall growth.",
-        price: 1999,
-        originalPrice: 2999,
+        price: 2199,
+        originalPrice: 3499,
         includes: [
           { label: "60 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -183,8 +183,8 @@ const SilverPackage = () => {
         title: "Gold Course",
         description:
           "With the ever-evolving industry, upgrading yourself to the latest trends and technologies is necessary. This package is designed to impart the learners with essential soft skills. To bring a transformation in your field of expertise requires an evidence-based teaching pedagogy that is best suited for your professional and personal growth. This course package will help you to reach your ultimate goal and receive satisfactory results in your personality in a short span of time.",
-        price: 2999,
-        originalPrice: 5000,
+        price: 3999,
+        originalPrice: 7000,
         includes: [
           { label: "85 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -218,8 +218,8 @@ const SilverPackage = () => {
         title: "Platinum Package",
         description:
           "Designed specifically for students and entrepreneurs who aspire to be a digital marketer. With this course, now you can become a master of your own field. Covering a wide range of topics, now you can gain a lot of insight about the professional world. If you are someone who makes every possible effort to update themselves with the latest techniques, then this course is perfect for you. What are you waiting for? Get acquainted with the trending tools and latest technologies to make the best of your professional career.",
-        price: 3999,
-        originalPrice: 7000,
+        price: 5499,
+        originalPrice: 10000,
         includes: [
           { label: "100 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -232,53 +232,54 @@ const SilverPackage = () => {
         otherBenefits: [
           "Huge Commission On Every Referral upto 87%",
           "Access To All Live Training",
-          "Valuable Bonuses",
+          "Valuable Bonuses and Free Trips",
+          "Free Silver Course",
         ],
         learnItems: [
-          "Ui Design Mastery",
-          "Artificial Intelligence",
-          "Sales Funnel Creation",
-          "Facebook Ads Mastery",
-          "Spoken English Mastery",
-          "Public Speaking Mastery",
-          "Email Marketing Mastery",
-          "Communication Mastery ",
-          "Chat GPt and other A.I Tools ",
-          "Advanced Affiliate Marketing",
+          "U.X Designing",
+          "Easy Sales or leads",
+          "No Code Programming",
+          "Chat Bot Development",
+          " Advanced Copywriting",
+          "Institutional Digital Marketing",
+          "Institutional Affiliate Marketing ",
+          "Chatgpt and All Al tools course free",
+          "Youtube growth with Youtube coach",
+          "Instagram growth with Instagram coach",
         ],
-        img: "/bronze.jpeg",
+        img: "/platinum.jpeg",
       };
     } else if (courseId === "6") {
       return {
         title: "Diamond  Package",
         description:
-          "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
-        price: 1499,
-        originalPrice: 2500,
+          "Tailored for students and aspiring professionals looking to excel in the world of finance, this course is your key to mastering the field. It comprehensively covers a broad spectrum of topics, offering valuable insights into the financial industry. If you're dedicated to staying up- to-date with the latest financial techniques and strategies, this course is your ideal choice. Don't hesitate any longer. Dive into the world of trending financial tools and cutting-edge technologies to elevate your career in finance to new heights.",
+        price: 6999,
+        originalPrice: 15000,
         includes: [
-          { label: "100 hours on-demand video", icon: "🎥" },
+          { label: "200 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
           { label: "Access on mobile and TV", icon: "📱" },
           { label: "Assignments and quizzes", icon: "📝" },
           { label: "Certificate of Completion", icon: "🎓" },
         ],
         overviewDescription:
-          "Overview for Bronze Package Unlock a world of opportunities with our carefully curated Bronze Course Bundle, designed to equip you with essential skills that are indispensable in today's professional landscape. Whether you're a student looking to bolster your resume or a seasoned professional aiming to enhance your proficiency, this comprehensive package has something for everyone. We've carefully selected courses that cover essential skills demanded by employers across industries. With hands-on training and practical insights, you'll be well-prepared for real-world challenges. Our courses are led by industry experts who bring their knowledge and experience to the virtual classroom, ensuring you receive top-notch education. We believe in making quality education accessible to all. The Bronze Course Bundle offers incredible value for your investment in personal and professional growth. Take the first step toward a brighter future with Gurukul Skills.",
+          "Delve into the fundamentals of personal finance, including budgeting, savings strategies, debt management, and long- term financial planning. Learn how to set and achieve financial goals, ensuring a secure financial future.These are the key points which are included in this course which will help you in your journey of managing personal finance.BudgetingSetting and achieving your financial goalsSaving, Investing rules, Loans, Bonds, Mutual Funds, FDs, Insurance Taxation, Emergency Funds, Roadmap of making 1cr snf and Online Startups.Stock Market for Beginners: Embark on an enlightening journey through the intricacies of the stock market. We'll demystify stock market terminology, introduce you to key concepts, and provide you with practical insights into stock analysis, investment strategies, and risk management.",
         otherBenefits: [
           "Huge Commission On Every Referral upto 87%",
           "Access To All Live Training",
           "Valuable Bonuses",
         ],
         learnItems: [
-          "Ms Word Course",
-          "Ms Excel Course",
-          "Time Management",
-          "Comunication Skills",
-          "Ms Powerpoint Course",
-          "Interview Mastery Course",
-          "Freelancing Mastery Course",
+          "No Code  Software Development",
+          "Zero Code Web Development",
+          "Digital Marketing Online startup",
+          "Advance Graphics Designing",
+          "Video Production",
+          "Cyber Security Tech",
+          "And Many other High Technical Skills",
         ],
-        img: "/bronze.jpeg",
+        img: "/diamond.jpeg",
       };
     }
 
