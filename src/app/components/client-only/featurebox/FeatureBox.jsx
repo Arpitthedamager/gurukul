@@ -15,31 +15,74 @@ const FeatureBox = () => {
         }))
       : [];
 
+  const handleAddCourse = async () => {
+    try {
+      const data = {
+        email: email,
+        courseId: id,
+      };
+      console.log(data);
+      const response = await fetch("../../api/courses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add course. Server responded with error.");
+      }
+
+      const responseData = await response.text();
+      if (responseData) {
+        const jsonData = JSON.parse(responseData);
+        console.log(jsonData);
+        // Handle the JSON data
+      } else {
+        console.log("f");
+        // Handle empty response
+      }
+      console.log(responseData.message); // Assuming the backend API returns a success message
+    } catch (error) {
+      console.error("There was a problem with the request:", error);
+      setErrorMessage("Failed to add course. Please try again later.");
+    }
+  };
+
   const subscriptions = [
     {
       id: 1,
       name: "Basic",
       imageSrc: "/basic.jpeg",
       price: "₹ 1999",
-      description: "Dive into the world of technology with our expert-led courses.",
+      description:
+        "Dive into the world of technology with our expert-led courses.",
     },
     {
       id: 2,
       name: "Premium",
       imageSrc: "/Premium.jpeg",
       price: "₹ 2999",
-      description: "Join the financial revolution and master cutting-edge technologies.",
+      description:
+        "Join the financial revolution and master cutting-edge technologies.",
     },
     {
       id: 3,
       name: "Pro",
       imageSrc: "/pro.jpeg",
       price: "₹ 3499",
-      description: "Unlock the power of passive income with our comprehensive course.",
+      description:
+        "Unlock the power of passive income with our comprehensive course.",
     },
   ];
 
-  const filteredSubscriptions = subscriptions.filter(subscription => !subscriptionsFromDB.some(dbSubscription => dbSubscription.id === subscription.id));
+  const filteredSubscriptions = subscriptions.filter(
+    (subscription) =>
+      !subscriptionsFromDB.some(
+        (dbSubscription) => dbSubscription.id === subscription.id
+      )
+  );
 
   return (
     <div className="container mx-auto py-8">
@@ -52,7 +95,10 @@ const FeatureBox = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {filteredSubscriptions.map((subscription, index) => (
-              <div key={subscription.id} className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white">
+              <div
+                key={subscription.id}
+                className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white"
+              >
                 <div className="item-img  overflow-hidden">
                   <Image
                     src={subscription.imageSrc}
@@ -75,7 +121,7 @@ const FeatureBox = () => {
                   </p>
                   <div className="item-footer">
                     <Link
-                     href="pament "
+                      href="pament "
                       className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                     >
                       Join us
