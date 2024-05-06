@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Profilimg from "../profilimg/Profilimg";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const Navbar = ({ toggleMobileMenu }) => {
   const [open, setOpen] = useState(false);
@@ -34,10 +35,13 @@ const Navbar = ({ toggleMobileMenu }) => {
                 className="md:hidden"
                 onClick={() => setProfile(!profile)} // Toggle mobile menu when clicking the profile image
               >
-                <img
+                <Image
                   src="/pop.webp"
                   alt="Profile"
-                  className="h-10 w-10 rounded-full cursor-pointer mr-2 md:mr-4" // Add margin to the right side in desktop mode
+                  className="h-10 w-10 rounded-full cursor-pointer mr-2 md:mr-4" // Add margin to the right side in desktop mod
+                  width={40}
+                  height={40}
+                  // layout="fixed"
                 />
                 {profile ? <Profilimg /> : ""}
               </div>
@@ -86,10 +90,12 @@ const Navbar = ({ toggleMobileMenu }) => {
                 className="hidden md:flex"
                 onClick={() => setProfile(!profile)} // Toggle mobile menu when clicking the profile image
               >
-                <img
-                  src="pop.webp" // Replace with actual path to profile image
+                <Image
+                  src="/pop.webp" // Replace with actual path to profile image
                   alt="Profile"
                   className="h-10 w-10 rounded-full cursor-pointer mr-2 md:mr-4" // Add margin to the right side in desktop mode
+                  width={40}
+                  height={40}
                 />
                 {profile ? <Profilimg /> : ""}
               </div>

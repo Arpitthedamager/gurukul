@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const My_subs = () => {
   const { data: session } = useSession();
@@ -126,7 +127,7 @@ const My_subs = () => {
               {subscriptionsToShow.map((subscription) => (
                   <div key={subscription.id} className={`item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white ${subscription.blurred ? 'filter blur-lg' : ''}`}>
                     <div className="item-img h-72 overflow-hidden">
-                      <img
+                      <Image
                         src={subscription.imageSrc}
                         alt={subscription.name}
                         className="w-full h-full object-cover"

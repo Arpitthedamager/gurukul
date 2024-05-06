@@ -94,12 +94,12 @@ const CoursesPage = () => {
               className="bg-gradient-to-tr from-blue-700 via-purple-700 to-pink-700 rounded-lg overflow-hidden shadow-4xl transition duration-300 transform hover:scale-105 h-full ease-in-out"
             >
               <div className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full ">
-                <img
+                <Image
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 md:h-64 object-cover shadow-md"
-                  width="O"
-                  height="O"
+                  width={1000}
+                  height={0}
                 />
                 <div className="p-6 md:p-8 bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-b-lg">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-4 md:mb-6 text-white">

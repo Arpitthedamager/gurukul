@@ -111,7 +111,7 @@ function CompanyBlog() {
       <div className="min-h-screen pt-20 flex flex-col md:flex-row ">
         <div className="md:w-3/4 p-4 overflow-y-auto relative">
           <div className="max-w-4xl w-full mx-auto ">
-            <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+            <h1 className="text-4xl font-bold text-center mb-8 text-gray- 100">
               Explore Our Company Blog
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

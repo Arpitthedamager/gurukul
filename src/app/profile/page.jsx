@@ -11,6 +11,7 @@ import {
 import Navbar from "../components/client-only/nevbar/Navbar";
 import Footer from "../components/client-only/footer/Footer";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const ProfileCard = () => {
   const { data: session } = useSession();
@@ -33,7 +34,7 @@ const ProfileCard = () => {
           name: session.user.username || "",
           email: session.user.email || "",
           id: session.phone || "",
-          followers: session.phone || 0,
+          followers: session.refers || 0,
           bio: session.bio || "",
           joined: session.dob || "",
           social: session.user.social || {},
@@ -126,10 +127,12 @@ const ProfileCard = () => {
               {/* Profile Card Content */}
               <div className="flex items-center justify-center">
                 <div className="relative w-32 h-32 mr-4 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     src={profileData.profileImage || "/pop.webp"}
-                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                    className="absolute  rounded-full inset-0 w-full h-full object-cover cursor-pointer"
                     alt="Profile Image"
+                    height={1000}
+                    width={1000}
                     onClick={() => fileInputRef.current.click()}
                   />
                   <button className="absolute inset-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-full">
@@ -173,7 +176,7 @@ const ProfileCard = () => {
                 {profileData.gender}
               </p>
               <button
-                className="btn btn-dark h-10 mt-2 bg-red-600 hover:bg-gray-500 ocus:outline-none text-gray-900 border-gray-300 rounded-md px-4 py-2 "
+                className=" relative hidden btn btn-dark h-10 mt-2 bg-red-600 hover:bg-gray-500 ocus:outline-none text-gray-900 border-gray-300 rounded-md px-4 py-2 "
                 onClick={() => setIsEditing(true)}
               >
                 Edit Profile
@@ -186,7 +189,7 @@ const ProfileCard = () => {
                 <FaLinkedin className="text-3xl text-gray-900 hover:text-blue-500 cursor-pointer" />
               </div>
               <div className="px-4 py-2 mt-4 bg-gray-100 rounded-md text-sm text-gray-800">
-                Joined {profileData.joined}
+                DOB {profileData.joined}
               </div>
             </div>
           </div>

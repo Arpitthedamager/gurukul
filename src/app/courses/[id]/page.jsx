@@ -15,8 +15,18 @@ const SilverPackage = () => {
   const param = useParams();
   // Define courseId from params
   const id = param.id;
-  const email = session.user.email;
-  console.log(email);
+  let email;
+  if (session) {
+    email = session.user.email;
+    console.log(email);
+  }
+  console.log(id, email)
+  useEffect(() => {
+    // Redirect to login page if session is not available
+    if (!session) {
+      router.replace("/login");
+    }
+  }, [session, router]);
 
   // Define side effects using useEffect
 
@@ -34,19 +44,13 @@ const SilverPackage = () => {
       document.getElementById("razorpay-button-container").appendChild(script);
     }
   }, [id]); // Trigger effect when id changes
-  // useEffect(() => {
-  //   // Redirect to login page if session is not available
-  //   if (!session) {
-  //     router.replace("/login");
-  //   }
-  // }, [session, router]);
   const handleAddCourse = async () => {
     try {
       const data = {
-        email,
+        email:email,
         courseId: id,
       };
-      console.log("fuck", data);
+      console.log(data);
       const response = await fetch("../../api/courses", {
         method: "POST",
         headers: {
@@ -65,7 +69,7 @@ const SilverPackage = () => {
         console.log(jsonData);
         // Handle the JSON data
       } else {
-        console.log("fuck");
+        console.log("f");
         // Handle empty response
       }
       console.log(responseData.message); // Assuming the backend API returns a success message
@@ -301,12 +305,12 @@ const SilverPackage = () => {
           <div className="flex flex-col lg:flex-row justify-center items-center mb-12 hover:scale-105 transition-transform duration-300">
             <div className="w-full lg:w-1/2 relative rounded-lg overflow-hidden shadow-md mb-4 lg:mb-0 transform transition-transform duration-300 hover:grayscale-0">
               {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-sky-500 opacity-80 lg:opacity-100 transition-opacity duration-300"></div> */}
-              <img 
+              <Image
                 src={courseData.img}
                 alt="Course Image"
                 className="w-full h-64 object-cover hover:grayscale-0 transition-filter duration-300"
-                width="O"
-                height="O"
+                height={0}
+                 width={1000}
               />
             </div>
             <div className="max-w-md text-center lg:w-1/2">
@@ -319,7 +323,7 @@ const SilverPackage = () => {
               <form id="razorpay-button-container"></form>
             </div>
           </div>
-          <button className=" bg-black" onClick={handleAddCourse}>
+        <button className=" bg-black" onClick={handleAddCourse}>
             add courses
           </button>
           {errorMessage && (

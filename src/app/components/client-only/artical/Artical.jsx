@@ -22,7 +22,7 @@ const ArticleSection = () => {
             {/* <p className="mbr-text mbr-fonts-style text-base mb-4"> */}
             our free network and affiliates marketing .{/* </p> */}
             <p className="mbr-text mbr-fonts-style text-base mb-4">
-              Experience the power of knowledge like never before. Let's shape
+              Experience the power of knowledge like never before. Let&apos;s shape
               the future together!
             </p>
             </div>

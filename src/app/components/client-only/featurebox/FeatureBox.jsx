@@ -53,11 +53,14 @@ const FeatureBox = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {filteredSubscriptions.map((subscription, index) => (
               <div key={subscription.id} className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full bg-white">
-                <div className="item-img h-72 overflow-hidden">
-                  <img
+                <div className="item-img  overflow-hidden">
+                  <Image
                     src={subscription.imageSrc}
                     alt={subscription.name}
                     className="w-full h-full object-cover"
+                    width={10}
+                    height={1000}
+                    layout="responsive"
                   />
                 </div>
                 <div className="item-content p-6 bg-white">
@@ -72,7 +75,7 @@ const FeatureBox = () => {
                   </p>
                   <div className="item-footer">
                     <Link
-                      href={`pament page`}
+                     href="pament "
                       className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                     >
                       Join us

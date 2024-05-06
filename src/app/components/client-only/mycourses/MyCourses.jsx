@@ -2,6 +2,7 @@
 import React, { useState, useEffect} from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const My_Courses = () => { 
   const { status: data, data: session } = useSession();
@@ -154,10 +155,13 @@ console.log(coursesFromDB)
               }`}
             >
               <div className="item-wrapper border rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:scale-105 h-full ">
-                <img
+                <Image
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 md:h-64 object-cover shadow-md"
+                  height={0}
+                   width={1000}
+                   
                 />
                 <div className="p-6 md:p-8 bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-b-lg">
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-4 md:mb-6 text-white">

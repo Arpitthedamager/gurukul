@@ -27,8 +27,11 @@ const HomePage = () => {
         <HeaderSec />
       </div>
       <div className="min-h-screen">
+        <div className=" px-8 py-8">
         <Artical />
+
         <FeatureBox />
+        </div>
         {/* <MidSection /> */}
         <Leaderboard />
         <FeatureSection />
