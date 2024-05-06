@@ -84,7 +84,7 @@ const CoursesPage = () => {
           <strong>Courses</strong>
         </h4>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-10 md:gap-20 p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-10 md:gap-10 p-8">
           {coursesToShow.map((course, index) => (
             <div
               key={course.id}

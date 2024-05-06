@@ -15,9 +15,9 @@ const HomePage = () => {
   return (
   <div className="relative">
       <Navbar />
-      <div className="relative h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] overflow-hidden mt-16">
+      <div className="relative h-[50vh] md:h-[70vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] overflow-hidden mt-16">
         <video
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
+          className="absolute top-0 left-0 b w-full h-full object-cover opacity-50"
           autoPlay
           loop
           muted

@@ -6,7 +6,12 @@ import { useSession } from "next-auth/react";
 
 const FeatureBox = () => {
   const { data: session } = useSession();
-
+  let email;
+  if (session) {
+    
+    email = session.user.email;
+    console.log(email);
+  }
   const subscriptionsFromDB =
     session && session.Subscription
       ? session.Subscription.map((sub) => ({
@@ -15,20 +20,20 @@ const FeatureBox = () => {
         }))
       : [];
 
-  const handleAddCourse = async () => {
+  const handleAddCourse = async (id,email) => {
     try {
       const data = {
         email: email,
         courseId: id,
       };
-      console.log(data);
-      const response = await fetch("../../api/courses", {
+      const response = await fetch("api/subscriptions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
+      console.log(response.body);
 
       if (!response.ok) {
         throw new Error("Failed to add course. Server responded with error.");
@@ -120,12 +125,12 @@ const FeatureBox = () => {
                     {subscription.description}
                   </p>
                   <div className="item-footer">
-                    <Link
-                      href="pament "
+                    <button
+                      onClick={() => handleAddCourse(subscription.id,email)}
                       className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                     >
                       Join us
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

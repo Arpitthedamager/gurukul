@@ -18,9 +18,7 @@ const SilverPackage = () => {
   let email;
   if (session) {
     email = session.user.email;
-    console.log(email);
   }
-  console.log(id, email)
   // useEffect(() => {
   //   // Redirect to login page if session is not available
   //   if (!session) {
@@ -44,10 +42,10 @@ const SilverPackage = () => {
       document.getElementById("razorpay-button-container").appendChild(script);
     }
   }, [id]); // Trigger effect when id changes
-  const handleAddCourse = async () => {
+  const handleAddCourse = async (id, email) => {
     try {
       const data = {
-        email:email,
+        email: email,
         courseId: id,
       };
       console.log(data);
@@ -311,7 +309,7 @@ const SilverPackage = () => {
                 alt="Course Image"
                 className="w-full h-64 object-cover hover:grayscale-0 transition-filter duration-300"
                 height={0}
-                 width={1000}
+                width={1000}
               />
             </div>
             <div className="max-w-md text-center lg:w-1/2">
@@ -324,7 +322,10 @@ const SilverPackage = () => {
               <form id="razorpay-button-container"></form>
             </div>
           </div>
-        <button className=" bg-black" onClick={handleAddCourse}>
+          <button
+            className=" bg-black"
+            onClick={() => handleAddCourse(id, email)}
+          >
             add courses
           </button>
           {errorMessage && (

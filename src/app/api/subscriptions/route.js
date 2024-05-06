@@ -14,8 +14,8 @@ export async function POST(req, res) {
   if (req.method === "POST") {
     try {
       // Extract necessary data from the request body
-      // const { email, subscriptionid } = req.body;
-      const { email, subscriptionid } = defaultTransaction;
+      const { email, subscriptionid } = req.body;
+      // const { email, subscriptionid } = defaultTransaction;
 
       console.log(email,subscriptionid);
       // Ensure subscriptionid is a number

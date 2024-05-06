@@ -29,6 +29,13 @@ const Navbar = ({ toggleMobileMenu }) => {
         <div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-12">
           {/* Profile Image (Left Side) */}
           <div className="flex items-center">
+          <Image
+                  src="/favicon.ico" // Replace with actual path to profile image
+                  alt="Profile"
+                  className="h-15 w-15 rounded-full cursor-pointer mr-2 md:mr-4" // Add margin to the right side in desktop mode
+                  width={40}
+                  height={40}
+                />
             {/* Logo */}
             {session && (
               <div
