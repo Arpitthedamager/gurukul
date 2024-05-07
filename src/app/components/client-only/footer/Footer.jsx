@@ -1,5 +1,5 @@
 // components/Footer.jsx
-import { FaYoutube, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+import { FaYoutube, FaInstagram, FaTwitter, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="relative py-12">
@@ -48,7 +48,7 @@ const Footer = () => {
                   href="/bilog"
                   className="hover:text-gray-300 transition duration-300"
                 >
-                  blog
+                  Blog
                 </a>
               </li>
               <li className="mb-3">
@@ -98,6 +98,14 @@ const Footer = () => {
                   <FaFacebookF className="text-4xl hover:text-blue-600 transition duration-300 ease-in-out" />
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://chat.whatsapp.com/G4Ht4GHmtTZ2Xhlbgs462v"
+                  className="text-xl text-white hover:text-gray-300 transition duration-300"
+                >
+                  <FaWhatsapp className="text-4xl hover:text-green-600 transition duration-300 ease-in-out" />
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -105,18 +113,18 @@ const Footer = () => {
           <div className="w-full md:w-1/2">
             <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
             <p className="mb-3">
-              <a href="https://www.google.com/maps?q=latitude,longitude">
+              <a href="https://www.google.com/maps?q=latitude,longitude" className="hover:text-blue-600">
                 MIG-B-622 Kalindi vihar, Agra, India
               </a>
             </p>
             <p className="mb-3">
               Phone:
               <a
-                href="tel:gurukulskills57@gmail.com "
+                href="tel:9310902451 "
                 className=" hover:text-blue-400 transition duration-300 ease-in-out m-1"
               >
                 {" "}
-                9719322171
+                9310902451
               </a>
             </p>
 

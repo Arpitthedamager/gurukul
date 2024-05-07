@@ -9,76 +9,85 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 const data = [
   {
     title: "Card 1",
-    question: "side",
+    question: "But Why I Choose GuruKul Skills ?",
     shortAnswer:
-      "Our company mission is to provide innovative solutions that empower our customers.",
+      "",
     longAnswer:
-      "Our company mission is to provide innovative solutions that empower our customers. We aim to revolutionize the industry by delivering cutting-edge products and services.",
+      "Because, we have best expert and consultancy to course enrolled members. we provide courses at best and valuable prices and gave free guidance for their financially and knowledegable growth.",
   },
   {
     title: "Card 2",
-    question: "side",
+    question: "what is leaderboard? ",
     shortAnswer:
-      "Customer satisfaction is our top priority, and we strive to exceed their expectations in every interaction.",
+      "",
     longAnswer:
-      "Customer satisfaction is our top priority, and we strive to exceed their expectations in every interaction. We value customer feedback and continuously improve our offerings.",
+      "It is a board where all courses and subscription enrolled members rank according to their Number  of referrals.",
   },
   {
     title: "Card 3",
-    question: "side",
-    shortAnswer:
-      "We follow an agile methodology, iterating quickly based on user feedback to deliver high-quality products.",
-    longAnswer:
-      "We follow an agile methodology, iterating quickly based on user feedback to deliver high-quality products. Our approach enables us to stay ahead of the curve and respond effectively to market demands.",
+    question: "What's about the prize of leaders board.",
+    shortAnswer:" ",
+        longAnswer:
+      "The Prizes of lakhs and thousand of rupees are given to their rank-holders and Prize distributed at after every six month.",
   },
   {
     title: "Card 4",
-    question: "side",
+    question: "What is GuruKul Skills ?",
     shortAnswer:
-      "Quality assurance is built into every step of our product development process, from design to testing and deployment.",
+      "",
     longAnswer:
-      "Quality assurance is built into every step of our product development process, from design to testing and deployment. We adhere to strict quality standards to ensure that our products meet the highest levels of reliability and performance.",
+      "GuruKul  skills provides online courses tought by India's top experts in hindi and from U.S.A top experts English also, to designed and develop stills and knowledge for entrepreneurship and investment with market trendy Success skills, with worldwide accessibility to help individual start and grow their startups or businese or make smart Investment decisions",
   },
   {
     title: "Card 5",
-    question: "side",
+    question: "What Kind of Courses does guruKul Skills offers ?",
     shortAnswer:
-      "We are focused on expanding our market reach through strategic partnerships and continuous innovation.",
+      "",
     longAnswer:
-      "We are focused on expanding our market reach through strategic partnerships and continuous innovation. By collaborating with industry leaders and leveraging emerging technologies, we aim to capture new opportunities and drive sustainable growth.",
+      "GuruKul Skills is an educational platform offering expert-designed courses in entrepreneurship, investing, trading, Algo trading, Highly advanced marketing, easy sales or leads, personal development any many more. we also connect these courses with affiliate  and network marketing that also makes mney for you.",
   },
   {
     title: "Card 6",
-    question: "side?",
+    question: "Is there any a refund policy for Gurukul Skills courses and subscription ? ",
     shortAnswer:
-      "We prioritize employee well-being and offer opportunities for growth and development through training and mentorship programs.",
+      "",
     longAnswer:
-      "We prioritize employee well-being and offer opportunities for growth and development through training and mentorship programs. Our goal is to foster a supportive work environment where employees can thrive and realize their full potential.",
+      "Yes, GuruKul Skills offers refund policy for their courses and also for subscription to their customers.",
   },
   {
     title: "Card 7",
     question: "side",
     shortAnswer:
-      "We are dedicated to reducing our environmental impact through sustainable practices and initiatives.",
+      "How to enroll in our courses and subscription ?",
     longAnswer:
-      "We are dedicated to reducing our environmental impact through sustainable practices and initiatives. From reducing waste to conserving energy, we strive to minimize our carbon footprint and contribute to a greener future.",
+      "Follow the steps to enroll in our courses and subscription. - Go to GuruKul Skills website.  - Register or Login.  - Choose your favourite your course and subscription.  - Fill in the blanks and Enroll.",
+      
   },
   {
     title: "Card 8",
-    question: "side",
+    question: "Will I get Completion certificate ?",
     shortAnswer:
-      "We actively participate in community events and support local organizations to give back to the communities where we operate.",
+      "",
     longAnswer:
-      "We actively participate in community events and support local organizations to give back to the communities where we operate. By engaging with the community, we aim to make a positive impact and build meaningful relationships.",
+      "Yes, you will get the completion certificate and also put in your resume. ",
   },
   {
     title: "Card 9",
-    question: "side",
+    question: "What's the maximum and minimum prizes in leaderboard  to their rank-holders ?",
     shortAnswer:
-      "Our commitment to innovation, quality, and customer satisfaction sets us apart and drives our success.",
+      "",
     longAnswer:
-      "Our commitment to innovation, quality, and customer satisfaction sets us apart and drives our success. We strive to push the boundaries of what's possible and deliver exceptional value to our customers.",
+      "The first prize is INR 10 lakh for first rank and last rank is INR 2000 (total ranks 65000).",
   },
+  {
+    title: "Card 10",
+    question: "Did GuruKul Skills provides referrals to it's enrolled members ?",
+    shortAnswer:
+      "",
+    longAnswer:
+      "Yes, Gurukul Skills provides upto 10 referaals per month to each enrolled members.",
+  },
+
 ];
 
 function CompanyBlog() {
@@ -132,15 +141,7 @@ function CompanyBlog() {
                       {card.shortAnswer}
                     </p>
                   </div>
-                    <div className=" inset-0 bg-black opacity-75 rounded-lg flex justify-center items-center">
-                      <div className="text-white text-center  P-6 pb-0">
-                        <h3 className="text-xl font-semibold mb-2">
-                          Answer
-                        </h3>
-                        <p className="text-sm ">{card.shortAnswer}</p>
-                        
-                      </div>
-                    </div>
+                    
                 {isExpanded && selectedCard === card && (
                   <div className=" inset-0 bg-black opacity-75 md:hidden rounded-lg flex justify-center items-center">
                     <div className="text-white text-center ">

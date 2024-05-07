@@ -24,7 +24,7 @@ const FeatureBox = () => {
     try {
       const data = {
         email: email,
-        courseId: id,
+        subscriptionid: id,
       };
       const response = await fetch("api/subscriptions", {
         method: "POST",
@@ -61,6 +61,7 @@ const FeatureBox = () => {
       name: "Basic",
       imageSrc: "/basic.jpeg",
       price: "₹ 1999",
+      link:"https://next-auth.js.org/v3/tutorials/creating-a-database-adapter#required-methods",
       description:
         "Dive into the world of technology with our expert-led courses.",
     },
@@ -69,6 +70,7 @@ const FeatureBox = () => {
       name: "Premium",
       imageSrc: "/Premium.jpeg",
       price: "₹ 2999",
+      link:"",
       description:
         "Join the financial revolution and master cutting-edge technologies.",
     },
@@ -77,6 +79,7 @@ const FeatureBox = () => {
       name: "Pro",
       imageSrc: "/pro.jpeg",
       price: "₹ 3499",
+      link:"",
       description:
         "Unlock the power of passive income with our comprehensive course.",
     },
@@ -125,12 +128,14 @@ const FeatureBox = () => {
                     {subscription.description}
                   </p>
                   <div className="item-footer">
+                    <Link href={subscription.link}>
                     <button
                       onClick={() => handleAddCourse(subscription.id,email)}
                       className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
-                    >
+                      >
                       Join us
                     </button>
+                      </Link>
                   </div>
                 </div>
               </div>

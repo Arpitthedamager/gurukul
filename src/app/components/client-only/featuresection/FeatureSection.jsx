@@ -126,8 +126,7 @@ const FeaturesSection = () => {
                 <strong>How to enroll in courses?</strong>
               </h5>
               <p className="text-lg mb-3">
-                Enrolling in courses is as easy as a click! Simply browse our
-                catalog, choose your course, and hit enroll to start learning.
+                Enrolling in courses is as easy as a go to website, choose your course, and hit enroll to start learning.
               </p>
             </div>
             <div className="item">
@@ -145,8 +144,7 @@ const FeaturesSection = () => {
               </h5>
               <p className="text-lg mb-3">
                 Our referral program rewards you for spreading the knowledge!
-                Refer friends and earn exciting rewards for each successful
-                enrollment they make.
+                Refer friends and earn 87% commisssion, Exciting rewards, Trips and other rewards.
               </p>
             </div>
             <div className="item">

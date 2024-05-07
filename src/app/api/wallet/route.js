@@ -9,16 +9,16 @@ const defaultTransaction = {
   amount: 1000
 };
 export async function POST(req, res) {
-  // const { id, amount, upiId } = req.body;
-  const { id, amount, upiId } =defaultTransaction;
+  const { userId, amount, upiId } = await req.json();
+  // const { id, amount, upiId } =defaultTransaction;
   await connectToDB();
 
   try {
     // Fetch user document from database
-    console.log("id",id)
+    console.log("id",userId)
     console.log("amount",amount)
     console.log("upiId",upiId)
-    const user = await User.findById(id);
+    const user = await User.findById(userId);
 
     console.log(user)
     if (!user) {

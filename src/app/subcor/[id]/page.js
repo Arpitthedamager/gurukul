@@ -10,21 +10,24 @@ const My_sub = () => {
   const { status: data, data: session } = useSession();
   const param = useParams();  
   const id = param.id;
-  const coursesFromDB = session
-  ? session.course.map((course) => ({
-      id: parseInt(course.courseid), // Convert to integer if needed
-      referCode: course.courses_refer,
+
+  const subcode = session
+  ? session.Subcourse.map((Subcourse) => ({
+      id: parseInt(Subcourse.Subcourseid), // Convert to integer if needed
+      referCode: Subcourse.Subcourse_refer,
     }))
   : [];
+  console.log(id);
+  console.log(subcode);
   
 
-  const subcode = [
-    { id: 1, referCode: "ABC123" },
-    { id: 2, referCode: "XYZ789" },
-    { id: 4, referCode: "XYZ789" },
-    { id: 5, referCode: "XYZ789" },
-    { id: 6, referCode: "XYZ789" },
-  ];
+  // const subcode = [
+  //   { id: 1, referCode: "ABC123" },
+  //   { id: 2, referCode: "XYZ789" },
+  //   { id: 4, referCode: "XYZ789" },
+  //   { id: 5, referCode: "XYZ789" },
+  //   { id: 6, referCode: "XYZ789" },
+  // ];
 
   const coursesData = (id) => {
     if (id === "1") {
@@ -94,7 +97,7 @@ const My_sub = () => {
 
   useEffect(() => {
     filterCourses();
-  }, [id]);  // Trigger useEffect when id changes
+  },[id]);  // Trigger useEffect when id changes
 
   const filterCourses = () => {
     if (id) {
@@ -136,7 +139,7 @@ const My_sub = () => {
   const handleShare = async (courseId) => {
     const course = subcode.find((c) => c.id === courseId);
     if (course) {
-      const url = `/refer/${course.referCode}`;
+      const url = `/course`;
       try {
         await navigator.share({ url });
         console.log("Shared Refer Link:", url);

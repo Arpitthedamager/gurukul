@@ -15,9 +15,9 @@ export async function POST(req, res) {
   if (req.method === "POST") {
     try {
       // Extract necessary data from the request body
-      const { email, courseId } = req.body;
+      const { email, courseId } = await req.json();
       // const { email, courseId } =  defaultTransaction;
-      console.log("Received data:", req);
+      console.log("Received data:", req.json());
       console.log(email);
       console.log(courseId);
       // Generate the courseRefer here (for demonstration purposes, generating a random string)

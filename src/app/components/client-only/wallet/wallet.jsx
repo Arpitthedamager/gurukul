@@ -10,11 +10,13 @@ const WalletPage = () => {
   const [transactions, setTransactions] = useState([]);
   const [balance, setBalance] = useState(session?.current_balance || 10);
   const [userId, setUserId] = useState(""); // State for user ID
-
   useEffect(() => {
     if (session?.current_balance !== undefined) {
       setBalance(session.current_balance);
-      setUserId(session?.user?.id); // Set user ID from session
+      setUserId(session?.user.id);
+      // setTransactions(session?.transaction);
+      setTransactions(session.Transaction)
+       // Set user ID from session
     } else {
       setBalance(10);
     }

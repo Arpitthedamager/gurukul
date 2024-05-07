@@ -27,21 +27,39 @@ const SilverPackage = () => {
   // }, [session, router]);
 
   // Define side effects using useEffect
-
   useEffect(() => {
     // Dynamically load Razorpay script based on courseId
     if (!scriptLoadedRef.current && id) {
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/payment-button.js";
       script.async = true;
-      script.dataset.payment_button_id =
-        id === "1" ? "pl_O1lSJYOUZy2XIZ" : "pl_O626nJcqnawAkg";
-      script.onload = () => {
-        scriptLoadedRef.current = true;
+
+      // Mapping course IDs to payment button IDs
+      const paymentButtonIds = {
+        "1": "pl_O7WNjAdOgbIYA4",
+        "2": "pl_O7WQdofQ9sMuFu",
+        "3": "pl_O7WeGCVFZ6VM96", 
+        "4": "pl_O7WfzDGFPdVpgB", 
+        "5": "pl_O7WU3Rmh7gVIBC",
+        "6": "pl_O7WW2MxWCDvoox",
       };
-      document.getElementById("razorpay-button-container").appendChild(script);
+
+      // Check if the course ID has a corresponding payment button ID
+      const paymentButtonId = paymentButtonIds[id];
+
+      if (paymentButtonId) {
+        script.dataset.payment_button_id = paymentButtonId;
+        script.onload = () => {
+          scriptLoadedRef.current = true;
+          
+        };
+        document.getElementById("razorpay-button-container").appendChild(script);
+      } else {
+        console.error("No payment button ID found for course ID:", id);
+      }
     }
-  }, [id]); // Trigger effect when id changes
+  }, [id]);
+ // Trigger effect when id changes
   const handleAddCourse = async (id, email) => {
     try {
       const data = {
@@ -319,15 +337,15 @@ const SilverPackage = () => {
                   ₹{courseData.originalPrice}
                 </span>
               </div>
-              <form id="razorpay-button-container"></form>
+              <form id="razorpay-button-container" onClick={() => handleAddCourse(id, email)}></form>
             </div>
           </div>
-          <button
+          {/* <button
             className=" bg-black"
             onClick={() => handleAddCourse(id, email)}
           >
             add courses
-          </button>
+          </button> */}
           {errorMessage && (
             <div className="text-center mb-4 text-red-600">{errorMessage}</div>
           )}
