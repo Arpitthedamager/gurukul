@@ -143,7 +143,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-10 text-center">
           <p>
-            &copy; {new Date().getFullYear()} Your Website Name. All rights
+            &copy; {new Date().getFullYear()}  Gurukul skills. All rights
             reserved.
           </p>
         </div>

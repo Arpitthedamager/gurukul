@@ -9,18 +9,9 @@ const ArticleSection = () => {
             </h3>
             <div className=" md:text-center">
             {/* <p className="mbr-text mbr-fonts-style text-base mb-4"> */}
-            At Ed. Tec,we are on a mission to revolutionize online learning with
-            {/* </p> */}
-            {/* <p className="mbr-text mbr-fonts-style text-base mb-4"> */}
-            our futristic courses. Join us in your journey to upgrade your
-            skills and
-            {/* </p> */}
-            {/* <p className="mbr-text mbr-fonts-style text-base mb-4"> */}
-            stay a ahead in the digital era and also become financially
-            independent with
-            {/* </p> */}
-            {/* <p className="mbr-text mbr-fonts-style text-base mb-4"> */}
-            our free network and affiliates marketing .{/* </p> */}
+            At Ed. Tech,we are on a mission to revolutionize online learning with  our futuristic courses. Join us in your journey to upgrade your
+            skills and<br/> stay a ahead in the digital era and also become financially
+            independent with  our free network and affiliates marketing .{/* </p> */}
             <p className="mbr-text mbr-fonts-style text-base mb-4">
               Experience the power of knowledge like never before. Let&apos;s shape
               the future together!

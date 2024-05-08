@@ -1,4 +1,5 @@
 // app/courses/[id]/page.jsx
+
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
@@ -6,8 +7,10 @@ import { useSession } from "next-auth/react";
 import Navbar from "../../components/client-only/nevbar/Navbar";
 import Footer from "../../components/client-only/footer/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 const SilverPackage = () => {
+  const [popupContent, setPopupContent] = useState(null); // Define state for popup content
   const scriptLoadedRef = useRef(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { status: data, data: session } = useSession();
@@ -19,12 +22,16 @@ const SilverPackage = () => {
   if (session) {
     email = session.user.email;
   }
-  // useEffect(() => {
-  //   // Redirect to login page if session is not available
-  //   if (!session) {
-  //     router.replace("/login");
-  //   }
-  // }, [session, router]);
+  useEffect(() => {
+    console.log("Session:", data);
+    console.log("Router:", router);
+    // Redirect to login page if session is not available
+  if (data==="unauthenticated") {
+      setPopupContent("Redirecting to login page...");
+      router.replace("/login");
+    }
+  }, [data, router]);
+
 
   // Define side effects using useEffect
   useEffect(() => {
@@ -36,12 +43,12 @@ const SilverPackage = () => {
 
       // Mapping course IDs to payment button IDs
       const paymentButtonIds = {
-        "1": "pl_O7WNjAdOgbIYA4",
-        "2": "pl_O7WQdofQ9sMuFu",
-        "3": "pl_O7WeGCVFZ6VM96", 
-        "4": "pl_O7WfzDGFPdVpgB", 
-        "5": "pl_O7WU3Rmh7gVIBC",
-        "6": "pl_O7WW2MxWCDvoox",
+        1: "pl_O7WNjAdOgbIYA4",
+        2: "pl_O7WQdofQ9sMuFu",
+        3: "pl_O7WeGCVFZ6VM96",
+        4: "pl_O7WfzDGFPdVpgB",
+        5: "pl_O7WU3Rmh7gVIBC",
+        6: "pl_O7WW2MxWCDvoox",
       };
 
       // Check if the course ID has a corresponding payment button ID
@@ -51,49 +58,15 @@ const SilverPackage = () => {
         script.dataset.payment_button_id = paymentButtonId;
         script.onload = () => {
           scriptLoadedRef.current = true;
-          
         };
-        document.getElementById("razorpay-button-container").appendChild(script);
+        document
+          .getElementById("razorpay-button-container")
+          .appendChild(script);
       } else {
         console.error("No payment button ID found for course ID:", id);
       }
     }
   }, [id]);
- // Trigger effect when id changes
-  const handleAddCourse = async (id, email) => {
-    try {
-      const data = {
-        email: email,
-        courseId: id,
-      };
-      console.log(data);
-      const response = await fetch("../../api/courses", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to add course. Server responded with error.");
-      }
-
-      const responseData = await response.text();
-      if (responseData) {
-        const jsonData = JSON.parse(responseData);
-        console.log(jsonData);
-        // Handle the JSON data
-      } else {
-        console.log("f");
-        // Handle empty response
-      }
-      console.log(responseData.message); // Assuming the backend API returns a success message
-    } catch (error) {
-      console.error("There was a problem with the request:", error);
-      setErrorMessage("Failed to add course. Please try again later.");
-    }
-  };
 
   // Define function to fetch course data based on id
   const fetchCourseData = (courseId) => {
@@ -311,6 +284,7 @@ const SilverPackage = () => {
     <>
       <Navbar />
       <div className="pt-6">
+      {popupContent && <div className="popup">{popupContent}</div>}
         <div className="font-sans max-w-4xl mx-auto mt-16 px-4 py-8 border border-gray-200 rounded-lg shadow-lg bg-gradient-to-r from-gray-100 to-white">
           <div className="text-center mb-8">
             <h1 className="text-5xl font-bold mb-4 text-gray-900">
@@ -337,15 +311,9 @@ const SilverPackage = () => {
                   ₹{courseData.originalPrice}
                 </span>
               </div>
-              <form id="razorpay-button-container" onClick={() => handleAddCourse(id, email)}></form>
+              <form id="razorpay-button-container"></form>
             </div>
           </div>
-          {/* <button
-            className=" bg-black"
-            onClick={() => handleAddCourse(id, email)}
-          >
-            add courses
-          </button> */}
           {errorMessage && (
             <div className="text-center mb-4 text-red-600">{errorMessage}</div>
           )}

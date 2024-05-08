@@ -130,7 +130,6 @@ const FeatureBox = () => {
                   <div className="item-footer">
                     <Link href={subscription.link}>
                     <button
-                      onClick={() => handleAddCourse(subscription.id,email)}
                       className="btn item-btn btn-primary text-lg bg-gradient-to-r from-rose-600 to-yellow-700 text-white py-3 px-8 rounded-full transition duration-300 ease-in-out hover:from-yellow-700 hover:to-yellow-800"
                       >
                       Join us

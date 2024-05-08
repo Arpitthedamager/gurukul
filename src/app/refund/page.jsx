@@ -21,10 +21,10 @@ const Refund = () => {
           </p>
 
           <p className="text-white-600 z-50 mb-4">
-          No Refund will be given to the customer for the purchase of any package made by the customer directly from the Gurukul Skills website <a href="" className="text-blue-400 hover:text-rose-700">
-            www.Gurukul.site 
+          No Refund will be given to the customer for the purchase of any package made by the customer directly from the Gurukul Skills website <a href="" className="text-blue-400 mr-1 hover:text-rose-700">
+            www.Gurukul.site   
             </a>
-              or through the affiliate link of the person who referred him to the LeadsGuru website after 2 hours of the purchase under any circumstances.
+                or through the affiliate link of the person who referred him to the LeadsGuru website after 2 hours of the purchase under any circumstances.
           </p>
 
           <p className="text-white-600 z-50 mb-4">
