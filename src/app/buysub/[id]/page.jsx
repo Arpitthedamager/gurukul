@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-const AddCoursePage = () => {
+
+const AddSubscription = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -33,7 +34,7 @@ const AddCoursePage = () => {
         subscriptionid: id,
       };
 
-      const response = await fetch("api/subscriptions", {
+      const response = await fetch("/api/subscriptions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,10 +67,12 @@ const AddCoursePage = () => {
   };
 
   const handleGoBack = () => {
-    router.replace("/subscriptions");
+    router.replace("/subscription");
   };
 
   return (
+    <>
+    
     <div className="flex justify-center items-center h-screen">
       <div className="text-center">
         {paymentId ? (
@@ -81,7 +84,7 @@ const AddCoursePage = () => {
               <button
                 onClick={handleAddCourse}
                 className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              >
+                >
                 Add subscriptions
               </button>
             )}
@@ -101,7 +104,8 @@ const AddCoursePage = () => {
         )}
       </div>
     </div>
+                </>
   );
 };
 
-export default AddCoursePage;
+export default AddSubscription;

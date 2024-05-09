@@ -149,12 +149,10 @@ const FeaturesSection = () => {
             </div>
             <div className="item">
               <h5 className="text-2xl font-semibold mb-3">
-                <strong>How to manage my profile details?</strong>
+                <strong>Did GuruKul Skills gave refferals to it&apos;s enrolled members?</strong>
               </h5>
               <p className="text-lg mb-3">
-                Managing your profile is a breeze! Simply navigate to the
-                Profile Management section in your dashboard to update your
-                information with ease.
+               Yes, GuruKul Skills provides minimum 10 refferals to each enrolled member per month.
               </p>
             </div>
             <div className="item">

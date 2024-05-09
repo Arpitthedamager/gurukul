@@ -23,6 +23,7 @@ export async function POST(req, res) {
 
       // Fetch the user from the database based on the email
       const user = await User.findOne({ email });
+      console.log(user)
 
       if (!user) {
         return NextResponse.json({ error: "User not found" }, { status: 404 });
