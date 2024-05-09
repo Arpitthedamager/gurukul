@@ -1,7 +1,7 @@
 // app/courses/[id]/page.jsx
 
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Navbar from "../../components/client-only/nevbar/Navbar";

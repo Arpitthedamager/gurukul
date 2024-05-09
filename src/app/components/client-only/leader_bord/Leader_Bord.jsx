@@ -22,7 +22,9 @@ const Leaderboard = () => {
     { id: 14, name: "kannnu", referrals: 68, prize: 5000, photo: "/jane.jpg" },
     { id: 15, name: "Nikita Jain", referrals: 62, prize: 5000, photo: "/doe.jpg" },
     { id: 16, name: "Alice", referrals: 2, prize: 16, photo: "/alice.jpg" },
-    { id: 17, name: "Bob", referrals: 1, prize: 20, photo: "/bob.jpg" },
+    { id: 17, name: "Bob", referrals: 2, prize: 30, photo: "/bob.jpg" },
+    { id: 18, name: "loading", referrals: 1, prize: 20, photo: "/bob.jpg" },
+    { id: 19, name: "loading", referrals: 1, prize: 20, photo: "/bob.jpg" },
     // ... add more data /for top 10
   ];
 
@@ -102,13 +104,13 @@ const Leaderboard = () => {
                   {index + 4}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {user.name}
+                {user.name !== "loading" ? user.name : "Loading..."} 
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {user.referrals}
+                {user.referrals !== 1 ? user.referrals : "Loading..."} 
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                ₹ {user.prize}
+                ₹ {user.prize !== 20 ? user.prize : "Loading..."}
                 </td>
               </tr>
             ))}

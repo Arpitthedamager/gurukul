@@ -19,7 +19,7 @@ async function login(credentials) {
   }
 }
 
-export const authOptions = {
+ const authOptions = {
   pages: {
     singIn: "/login",
   },
@@ -84,6 +84,7 @@ export const authOptions = {
       }
       return session;
     },
+    
   },
   session: {
     jwt: true,
