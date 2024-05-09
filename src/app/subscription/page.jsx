@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "../components/client-only/nevbar/Navbar";
 import FeatureBox from "../components/client-only/featurebox/FeatureBox";
-import My_subs from "../components/client-only/subscription/Subscription";
+import My_subs from "../components/client-only/My_subs/My_subs";
 import Footer from "../components/client-only/footer/Footer";
 import { useSession } from "next-auth/react";
 
