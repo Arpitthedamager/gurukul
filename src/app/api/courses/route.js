@@ -2,7 +2,6 @@
 import { User } from "../../lib/models";
 import { connectToDB } from "../../lib/util";
 import { NextResponse } from "next/server";
-import { getSession, updateSession } from "next-auth/client";
 
 
 
