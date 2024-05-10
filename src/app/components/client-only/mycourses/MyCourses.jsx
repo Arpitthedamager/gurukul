@@ -115,7 +115,7 @@ console.log(coursesFromDB)
   const handleShare = async (courseId) => {
     const course = coursesFromDB.find((c) => c.id === courseId);
     if (course) {
-      const url = `/refer/${course.referCode}`;
+      const url = `/courses`;
       try {
         await navigator.share({ url });
         console.log("Shared Refer Link:", url);

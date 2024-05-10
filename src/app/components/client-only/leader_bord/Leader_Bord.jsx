@@ -46,7 +46,16 @@ const Leaderboard = () => {
   const remainingData = sortedData.slice(3);
 
   return (
-    <div className="container mx-auto px-6 py-12 rounded-lg shadow-lg ">
+    <>
+      <div className="container mx-auto px-6 py-12 rounded-lg shadow-lg ">
+<div className="mbr-section-btn pb-8 text-center">
+        <a
+          className="btn btn-white-outline text-xl px-8 py-4 rounded-full border-2 border-white hover:bg-white hover:text-black transition duration-300 ease-in-out"
+          href="/courses"
+        >
+          Buy Courses
+        </a>
+      </div>    
       {/* Leaderboard Heading */}
       <h1 className="text-4xl font-bold text-center mb-8">Leaderboard</h1>
 
@@ -65,7 +74,7 @@ const Leaderboard = () => {
                 className="w-24 h-24 object-cover"
                 width={100}
                 height={100}
-              />
+                />
             </div>
             <h2 className="text-xl font-semibold">{user.name}</h2>
             <p className="text-sm">Referrals: {user.referrals}</p>
@@ -93,13 +102,13 @@ const Leaderboard = () => {
           <tbody>
             {remainingData.map((user, index) => (
               <tr
-                key={user.id}
+              key={user.id}
                 className={
                   index % 2 === 0
                     ? "bg-gray-100 text-gray-700"
                     : "bg-white text-gray-700"
                 }
-              >
+                >
                 <td className="border border-gray-300 px-4 py-2">
                   {index + 4}
                 </td>
@@ -118,6 +127,7 @@ const Leaderboard = () => {
         </table>
       </div>
     </div>
+                </>
   );
 };
 

@@ -9,10 +9,10 @@ const My_subs = () => {
   const subscriptionsFromDB = session && session.Subscription
     ? session.Subscription.map((sub) => ({
         id: parseInt(sub.Subscriptionid), // Update the property name
-        referCode: sub.sub_refer,
+        referCode: sub.Subscription_refer,
       }))
     : [];
-
+    console.log(subscriptionsFromDB);
   const subscriptions = [
     {
       id: 1,

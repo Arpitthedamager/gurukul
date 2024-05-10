@@ -8,18 +8,17 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 const My_sub = () => {
   const { status: data, data: session } = useSession();
-  const param = useParams();  
+  const param = useParams();
   const id = param.id;
 
   const subcode = session
-  ? session.Subcourse.map((Subcourse) => ({
-      id: parseInt(Subcourse.Subcourseid), // Convert to integer if needed
-      referCode: Subcourse.Subcourse_refer,
-    }))
-  : [];
+    ? session.Subcourse.map((Subcourse) => ({
+        id: parseInt(Subcourse.Subcourseid), // Convert to integer if needed
+        referCode: Subcourse.Subcourse_refer,
+      }))
+    : [];
   console.log(id);
   console.log(subcode);
-  
 
   // const subcode = [
   //   { id: 1, referCode: "ABC123" },
@@ -31,35 +30,57 @@ const My_sub = () => {
 
   const coursesData = (id) => {
     if (id === "1") {
-      return {
-        id: 1,
-      title: "Elite Package",
-      onelinedescription:
-        "Unleash your potential with essential skills. Dominate the digital realm and thrive with this comprehensive package for success.",
-      image: "/elite.jpeg",
-      level: "Elite",
-      prize: " INR 999",
-      };
+      return [
+        {
+          id: 1,
+          title: "Elite Package",
+          onelinedescription:
+            "Unleash your potential with essential skills. Dominate the digital realm and thrive with this comprehensive package for success.",
+          image: "/elite.jpeg",
+          level: "Elite",
+          prize: " INR 999",
+        },
+        {
+          id: 2,
+          title: "Bronze Package",
+          onelinedescription:
+            " Elevate your career with core skills. Empower your journey with this essential package for professional growth.",
+          image: "/bronze.jpeg",
+          level: "Bronze",
+          prize: "INR 1499",
+        },
+      ];
     } else if (id === "2") {
-      return {
-        id: 2,
-      title: "Bronze Package",
-      onelinedescription:
-        " Elevate your career with core skills. Empower your journey with this essential package for professional growth.",
-      image: "/bronze.jpeg",
-      level: "Bronze",
-      prize: "INR 1499",
-      };
+      return [
+        {
+          id: 2,
+          title: "Bronze Package",
+          onelinedescription:
+            " Elevate your career with core skills. Empower your journey with this essential package for professional growth.",
+          image: "/bronze.jpeg",
+          level: "Bronze",
+          prize: "INR 1499",
+        },
+        {
+          id: 3,
+          title: "Silver Package",
+          onelinedescription:
+            "Transform your presence with advanced expertise. Dominate the digital landscape confidently with this comprehensive package for success.",
+          image: "/silver.jpeg",
+          level: "Silver",
+          prize: "INR 2199",
+        },
+      ];
     } else if (id === "3") {
       return [
         {
           id: 3,
-      title: "Silver Package",
-      onelinedescription:
-        "Transform your presence with advanced expertise. Dominate the digital landscape confidently with this comprehensive package for success.",
-      image: "/silver.jpeg",
-      level: "Silver",
-      prize: "INR 2199",
+          title: "Silver Package",
+          onelinedescription:
+            "Transform your presence with advanced expertise. Dominate the digital landscape confidently with this comprehensive package for success.",
+          image: "/silver.jpeg",
+          level: "Silver",
+          prize: "INR 2199",
         },
         {
           id: 4,
@@ -79,15 +100,6 @@ const My_sub = () => {
           level: "platinum",
           prize: "INR 6999",
         },
-        {
-          id: 6,
-          title: "Diamond Package",
-          onelinedescription:
-            "Command the future, secure the top spot! Elevate your career and lead the way with this essential package for professional growth.",
-          image: "/diamond.jpeg",
-          level: "diamond",
-          prize: "INR 8999",
-        },
       ];
     }
     // Add other course objects here...
@@ -97,7 +109,7 @@ const My_sub = () => {
 
   useEffect(() => {
     filterCourses();
-  },[id]);  // Trigger useEffect when id changes
+  }, [id]); // Trigger useEffect when id changes
 
   const filterCourses = () => {
     if (id) {
@@ -110,7 +122,9 @@ const My_sub = () => {
         setCoursesToShow(filteredCourses);
       } else {
         // If courseData is not an array, check if it exists in subcode
-        const existsInSubcode = subcode.some((dbCourse) => dbCourse.id === courseData.id);
+        const existsInSubcode = subcode.some(
+          (dbCourse) => dbCourse.id === courseData.id
+        );
         if (existsInSubcode) {
           setCoursesToShow([courseData]);
         } else {
