@@ -89,7 +89,7 @@ const My_subs = () => {
       (sub) => sub.id === subscriptionId
     );
     if (subscription) {
-      const url = `/refer/${subscription.referCode}`;
+      const url = `https://gurukulskills.site/subscription`;
       try {
         await navigator.share({ url });
         console.log("Shared Refer Link:", url);

@@ -104,7 +104,7 @@ function Login() {
                 {/* Username Input */}
                 <div className="mb-8 relative">
                   <label htmlFor="username" className="block mb-2">
-                    email:
+                    Email:
                   </label>
                   <input
                     type="email"
