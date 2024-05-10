@@ -133,12 +133,6 @@ const Footer = () => {
           <div className="w-full md:w-1/4">
             <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
             <p className="mb-3">
-                Location:
-              <a href="https://www.google.com/maps?q=latitude,longitude" className="hover:text-blue-600 pl-1">
-                 MIG-B-622 Kalindi vihar, Agra, India
-              </a>
-            </p>
-            <p className="mb-3">
               Phone:{" "}
               <a href="tel:9310902451" className="hover:text-blue-400 transition duration-300 ease-in-out m-1">
                 9310902451
