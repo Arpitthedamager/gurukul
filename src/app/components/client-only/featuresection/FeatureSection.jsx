@@ -123,10 +123,10 @@ const FeaturesSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="item">
               <h5 className="text-2xl font-semibold mb-3">
-                <strong>How to enroll in courses?</strong>
+                <strong>How I get free refferals from Gurukul Skills?</strong>
               </h5>
               <p className="text-lg mb-3">
-                Enrolling in courses is as easy as a go to website, choose your course, and hit enroll to start learning.
+                For free refferals just e-mail with your details just after enrolled in our courses or subscriptions and after 48 hours you get upto 10 refferals after required elgibility criteria.
               </p>
             </div>
             <div className="item">

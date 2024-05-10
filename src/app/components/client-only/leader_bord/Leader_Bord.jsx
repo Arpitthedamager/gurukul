@@ -6,8 +6,8 @@ import Image from "next/image";
 const Leaderboard = () => {
   // Sample leaderboard data
   const leaderboardData = [
-    { id: 2, name: "Arpit Gupta", referrals: 136, prize: 500000, photo: "/jane.jpg" },
-    { id: 3, name: "Uday Chauhan", referrals: 124, prize: 200000, photo: "/book.jpeg" },
+    { id: 2, name: "Arpit Gupta", referrals: 136, prize: 500000, photo: "/pop.webp" },
+    { id: 3, name: "Uday Chauhan", referrals: 124, prize: 200000, photo: "/pop.webp" },
     { id: 4, name: "Shivang ", referrals: 118, prize: 100000, photo: "/pop.webp" },
     { id: 5, name: "Rahul Bhagel", referrals: 112, prize: 50000, photo: "/bob.jpg" },
     { id: 1, name: "Abhishek Singh", referrals: 154, prize: 1000000, photo: "/pop.webp" },
@@ -21,8 +21,8 @@ const Leaderboard = () => {
     { id: 13, name: "Bobby ", referrals: 74, prize: 5000, photo: "/bob.jpg" },
     { id: 14, name: "kannnu", referrals: 68, prize: 5000, photo: "/jane.jpg" },
     { id: 15, name: "Nikita Jain", referrals: 62, prize: 5000, photo: "/doe.jpg" },
-    { id: 16, name: "Alice", referrals: 2, prize: 16, photo: "/alice.jpg" },
-    { id: 17, name: "Bob", referrals: 2, prize: 30, photo: "/bob.jpg" },
+    { id: 16, name: "Akita", referrals: 59, prize: 5000, photo: "/alice.jpg" },
+    { id: 17, name: "Rakan", referrals: 56, prize: 5000, photo: "/bob.jpg" },
     { id: 18, name: "loading", referrals: 1, prize: 20, photo: "/bob.jpg" },
     { id: 19, name: "loading", referrals: 1, prize: 20, photo: "/bob.jpg" },
     // ... add more data /for top 10
@@ -47,13 +47,13 @@ const Leaderboard = () => {
 
   return (
     <>
-      <div className="container mx-auto px-6 py-12 rounded-lg shadow-lg ">
-<div className="mbr-section-btn pb-8 text-center">
+      <div className="container mx-auto px-8 py-12 rounded-lg shadow-lg ">
+<div className="mbr-section-btn pb-24 text-center">
         <a
-          className="btn btn-white-outline text-xl px-8 py-4 rounded-full border-2 border-white hover:bg-white hover:text-black transition duration-300 ease-in-out"
+          className="btn btn-white-outline text-xl px-8 py-4 rounded-full border-2 bg-white border-white text-black transition duration-300 ease-in-out"
           href="/courses"
         >
-          Buy Courses
+          View Our Packages
         </a>
       </div>    
       {/* Leaderboard Heading */}
