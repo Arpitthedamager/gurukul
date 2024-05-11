@@ -55,7 +55,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="mb-3">
-                <a href="/disclamer" className="hover:text-gray-300 transition duration-300">
+                <a href="/disclaimer" className="hover:text-gray-300 transition duration-300">
                   Disclamer
                 </a>
               </li>
