@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-
 const AddSubscription = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -24,7 +23,12 @@ const AddSubscription = () => {
     return <p>Loading...</p>;
   }
   if (sessionStatus === "unauthenticated") {
-    router.replace("/login");
+    return (
+      <>
+        <p>please login first </p>
+        <a href="/login">login</a>
+      </>
+    );
   }
   const handleAddCourse = async () => {
     setIsLoading(true);
@@ -60,7 +64,9 @@ const AddSubscription = () => {
       setIsCompleted(true);
     } catch (error) {
       console.error("There was a problem with the request:", error);
-      setErrorMessage("Failed to add course. Please try again later.");
+      setErrorMessage(
+        "Failed to add course.  your courses will be add in 8hr."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -72,39 +78,38 @@ const AddSubscription = () => {
 
   return (
     <>
-    
-    <div className="flex justify-center items-center h-screen">
-      <div className="text-center">
-        {paymentId ? (
-          <>
-            {isLoading && <p>Loading...</p>}
-            {isCompleted && <p>Process completed</p>}
-            {errorMessage && <p>{errorMessage}</p>}
-            {!isLoading && !isCompleted && (
-              <button
-                onClick={handleAddCourse}
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-center">
+          {paymentId ? (
+            <>
+              {isLoading && <p>Loading...</p>}
+              {isCompleted && <p>Process completed</p>}
+              {errorMessage && <p>{errorMessage}</p>}
+              {!isLoading && !isCompleted && (
+                <button
+                  onClick={handleAddCourse}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                 >
-                Add subscriptions
-              </button>
-            )}
-            {isCompleted && (
-              <a
-                onClick={handleGoBack}
-                className="text-blue-500 hover:underline cursor-pointer"
-              >
-                Go Back
-              </a>
-            )}
-          </>
-        ) : (
-          <p className="text-red-500">
-            Please make a payment first before adding a course.
-          </p>
-        )}
+                  Add subscriptions
+                </button>
+              )}
+              {isCompleted && (
+                <a
+                  onClick={handleGoBack}
+                  className="text-blue-500 hover:underline cursor-pointer"
+                >
+                  Go Back
+                </a>
+              )}
+            </>
+          ) : (
+            <p className="text-red-500">
+              Please make a payment first before adding a course.
+            </p>
+          )}
+        </div>
       </div>
-    </div>
-                </>
+    </>
   );
 };
 

@@ -70,9 +70,9 @@ const FeatureBox = () => {
 
         // Mapping course IDs to payment button IDs
         const paymentButtonIds = {
-          1: "pl_O7WYfVVbgLp5dT",
-          2: "pl_O7WaLwwrmZ8t3s",
-          3: "pl_O7Wc64Wk8wNXON",
+          1: "pl_O9CjZMAWzkzatM",
+          2: "pl_O9CmZHA4bA03E9",
+          3: "pl_O9CqAwAEg905Rc",
           // Add more mappings as needed
         };
 

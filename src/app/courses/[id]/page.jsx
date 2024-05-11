@@ -43,12 +43,12 @@ const SilverPackage = () => {
 
       // Mapping course IDs to payment button IDs
       const paymentButtonIds = {
-        1: "pl_O7WNjAdOgbIYA4",
-        2: "pl_O7WQdofQ9sMuFu",
-        3: "pl_O7WeGCVFZ6VM96",
-        4: "pl_O7WfzDGFPdVpgB",
-        5: "pl_O7WU3Rmh7gVIBC",
-        6: "pl_O7WW2MxWCDvoox",
+        1: "pl_O9C09xyJKcxWmq",
+        2: "pl_O9C5K6s0Soh7Q3",
+        3: "pl_O9CGCipF7Ioc9a",
+        4: "pl_O9CNBZIeKLbC61",
+        5: "pl_O9CWJfoaZO74sj",
+        6: "pl_O9Cc3pNtyEE22c",
       };
 
       // Check if the course ID has a corresponding payment button ID

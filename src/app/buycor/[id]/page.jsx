@@ -23,7 +23,11 @@ const AddCoursePage = () => {
     return <p>Loading...</p>;
   }
   if (sessionStatus === "unauthenticated") {
-    router.replace("/login");
+    return;
+    <>
+      <p>please login first</p>
+      <a href="/login ">login</a>
+    </>;
   }
 
   const handleAddCourse = async () => {
@@ -34,7 +38,7 @@ const AddCoursePage = () => {
         courseId: id,
       };
 
-      const response = await fetch("../../api/courses", {
+      const response = await fetch("/api/courses", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +64,7 @@ const AddCoursePage = () => {
       setIsCompleted(true);
     } catch (error) {
       console.error("There was a problem with the request:", error);
-      setErrorMessage("Failed to add course. Please try again later.");
+      setErrorMessage("Failed to add course. your courses will be add in 8hr.");
     } finally {
       setIsLoading(false);
     }

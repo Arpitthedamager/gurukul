@@ -6,6 +6,8 @@ const Tnc = () => {
   return (
     <>
       <Navbar />
+      <div className="pt-20">
+
       <div className="container mx-auto px-4 py-8 text-gray-100">
         <h2 className="text-3xl font-bold mb-4">Terms and Conditions</h2>
 
@@ -74,6 +76,21 @@ const Tnc = () => {
           We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that arise on your Website. No links should appear on any Website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
         </p>
 
+        <h3 className="text-xl font-bold mb-2">Cancellation and Refund Policy</h3>
+
+        <p className="mb-4">
+          Gurukul Skills believes in helping its customers as far as possible and has therefore adopted a liberal cancellation policy. Under this policy:
+        </p>
+
+        <ul className="list-disc list-inside mb-4">
+          <li>Cancellations will be considered only if the request is made within 15 days of placing the order. However, the cancellation request may not be entertained if the orders have been communicated to the vendors/merchants and they have initiated the process of shipping them.</li>
+          <li>We do not accept cancellation requests for perishable items like flowers, eatables, etc. However, refund/replacement can be made if the customer establishes that the quality of the product delivered is not good.</li>
+          <li>In case of receipt of damaged or defective items, please report the same to our Customer Service team within 15 days of receipt of the products. The request will, however, be entertained once the merchant has checked and determined the same at his own end.</li>
+          <li>If you feel that the product received is not as shown on the site or as per your expectations, you must bring it to the notice of our customer service within 15 days of receiving the product. Our Customer Service Team will investigate and take appropriate action.</li>
+          <li>Complaints regarding products that come with a warranty from manufacturers should be referred to them.</li>
+          <li>Refunds approved by Gurukul Skills will take 9-15 days for processing.</li>
+        </ul>
+
         <h3 className="text-xl font-bold mb-2">Reservation of Rights</h3>
 
         <p className="mb-4">
@@ -103,6 +120,7 @@ const Tnc = () => {
         <p>
           As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
         </p>
+      </div>
       </div>
       <Footer />
     </>

@@ -14,7 +14,7 @@ const Policy = () => {
       <Head>
         <title>Privacy Policy - Gurukul Skills</title>
       </Head>
-      <h1 className="text-3xl font-bold mb-4 text-center">Privacy Policy</h1>
+      <h1 className="text-3xl font-bold mb-4 ">Privacy Policy</h1>
       <p className="mb-8">This Privacy Policy describes how Gurukul Skills (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, and shares information when you use our learning courses website (the &quot;Service&quot;).</p>
 
       <h2 className="text-xl font-bold mb-4">Information We Collect</h2>

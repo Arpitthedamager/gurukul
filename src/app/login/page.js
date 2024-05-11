@@ -103,7 +103,7 @@ function Login() {
               <form onSubmit={handleSubmit}>
                 {/* Username Input */}
                 <div className="mb-8 relative">
-                  <label htmlFor="username" className="block mb-2">
+                  <label htmlFor="username" className="block  mb-2">
                     Email:
                   </label>
                   <input
