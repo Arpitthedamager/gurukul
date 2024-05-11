@@ -153,7 +153,7 @@ const My_sub = () => {
   const handleShare = async (courseId) => {
     const course = subcode.find((c) => c.id === courseId);
     if (course) {
-      const url = `/courses`;
+      const url = `https://gurukulskills.site/courses`;
       try {
         await navigator.share({ url });
         console.log("Shared Refer Link:", url);
