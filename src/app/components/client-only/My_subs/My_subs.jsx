@@ -79,6 +79,19 @@ const My_subs = () => {
     if (subscription) {
       navigator.clipboard.writeText(subscription.referCode);
       console.log("Copied Refer Code:", subscription.referCode);
+      // Update the copied state for the clicked subscription
+      const updatedSubscriptions = subscriptionsToShow.map((sub) =>
+        sub.id === subscriptionId ? { ...sub, copied: true } : sub
+      );
+      setSubscriptionsToShow(updatedSubscriptions);
+
+      // Reset the copied state after 2 seconds
+      setTimeout(() => {
+        const resetSubscriptions = updatedSubscriptions.map((sub) =>
+          sub.id === subscriptionId ? { ...sub, copied: false } : sub
+        );
+        setSubscriptionsToShow(resetSubscriptions);
+      }, 2000);
     } else {
       console.log("Subscription not found in DB for ID:", subscriptionId);
     }
@@ -161,7 +174,7 @@ const My_subs = () => {
                             onClick={() => handleCopy(subscription.id)}
                             disabled={subscription.blurred}
                           >
-                            Copy Code
+                          {subscription.copied ? "Copied!" : "Copy Code"}
                           </button>
                           <button
                             className={`text-sm text-gray-500 hover:text-black focus:outline-none ${subscription.blurred ? 'pointer-events-none opacity-50' : ''}`}

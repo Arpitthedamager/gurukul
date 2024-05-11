@@ -107,6 +107,19 @@ console.log(coursesFromDB)
     if (course) {
       navigator.clipboard.writeText(course.referCode);
       console.log("Copied Refer Code:", course.referCode);
+       // Update the copied state for the clicked course
+    const updatedCourses = coursesToShow.map((c) =>
+      c.id === courseId ? { ...c, copied: true } : c
+    );
+    setCoursesToShow(updatedCourses);
+
+    // Reset the copied state after 2 seconds
+    setTimeout(() => {
+      const resetCourses = updatedCourses.map((c) =>
+        c.id === courseId ? { ...c, copied: false } : c
+      );
+      setCoursesToShow(resetCourses);
+    }, 2000)
     } else {
       console.log("Course not found in DB for ID:", courseId);
     }
@@ -202,7 +215,7 @@ console.log(coursesFromDB)
                       onClick={() => handleCopy(course.id)}
                       disabled={coursesFromDB.length === 0}
                     >
-                      Copy Code
+                      {course.copied ? "Copied!" : "Copy Code"}
                     </button>
                     <button
                       className={`text-sm text-gray-400 hover:text-white focus:outline-none ${
