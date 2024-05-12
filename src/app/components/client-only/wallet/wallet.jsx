@@ -1,26 +1,32 @@
 // wallet.jsx
 "use client";
 import React, { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
 
 const WalletPage = () => {
-  const { data: session } = useSession();
   const [redeemAmount, setRedeemAmount] = useState("");
   const [upiId, setUpiId] = useState("");
   const [transactions, setTransactions] = useState([]);
-  const [balance, setBalance] = useState(session?.current_balance || 10);
-  const [userId, setUserId] = useState(""); // State for user ID
+  const [balance, setBalance] = useState(0); // Initialize balance to 0
+  const [userId, setUserId] = useState("");
+
   useEffect(() => {
-    if (session?.current_balance !== undefined) {
-      setBalance(session.current_balance);
-      setUserId(session?.user.id);
-      // setTransactions(session?.transaction);
-      setTransactions(session.Transaction)
-       // Set user ID from session
-    } else {
-      setBalance(10);
-    }
-  }, [session]);
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("/api/getmoneyuser");
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const userData = await response.json();
+        setUserId(userData.userId);
+        setBalance(userData.current_balance        );
+        setTransactions(userData.Transaction);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleRedeem = async (e) => {
     e.preventDefault();
@@ -39,9 +45,6 @@ const WalletPage = () => {
         setRedeemAmount("");
 
         // Make the API call to backend to store the transaction data
-        console.log(amount);
-        console.log(upiId); 
-        console.log(userId);  // Include user ID in the request body
         const response = await fetch('/api/wallet', {
           method: 'POST',
           headers: {
@@ -49,8 +52,6 @@ const WalletPage = () => {
           },
           body: JSON.stringify({ amount, upiId, userId })
         });
-        const data =await response.json()
-        console.log(data);
 
         if (!response.ok) {
           throw new Error('Failed to add transaction');
@@ -76,7 +77,7 @@ const WalletPage = () => {
             <div className="flex justify-between items-center mb-4">
               <div className="text-sm text-gray-600">Balance:</div>
               <div className="text-2xl font-bold text-blue-500">
-                ₹{balance.toFixed(2)}
+                ₹{balance ? balance.toFixed(2) : "0.00"} {/* Null check for balance */}
               </div>
             </div>
             <hr className="my-4" />
@@ -134,7 +135,7 @@ const WalletPage = () => {
                 Transaction History
               </h2>
               <ul>
-                {transactions.map((transaction, index) => (
+                {transactions && transactions.map((transaction, index) => (
                   <li key={index} className="text-gray-600 mb-2">
                     {transaction.amount < 0 ? (
                       <span className="text-red-500">

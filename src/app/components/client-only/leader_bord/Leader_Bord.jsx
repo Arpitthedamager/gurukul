@@ -6,14 +6,14 @@ import Image from "next/image";
 const Leaderboard = () => {
   // Sample leaderboard data
   const leaderboardData = [
-    { id: 2, name: "Arpit Gupta", referrals: 136, prize: 500000, photo: "/pop.webp" },
-    { id: 3, name: "Uday Chauhan", referrals: 124, prize: 200000, photo: "/pop.webp" },
-    { id: 4, name: "Shivang ", referrals: 118, prize: 100000, photo: "/pop.webp" },
+    { id: 2, name: "Krisha Singh", referrals: 136, prize: 500000, photo: "/pop.webp" },
+    { id: 3, name: "kalid ", referrals: 124, prize: 200000, photo: "/pop.webp" },
+    { id: 4, name: "Sikansh ", referrals: 118, prize: 100000, photo: "/pop.webp" },
     { id: 5, name: "Rahul Bhagel", referrals: 112, prize: 50000, photo: "/bob.jpg" },
-    { id: 1, name: "Abhishek Singh", referrals: 154, prize: 1000000, photo: "/pop.webp" },
+    { id: 1, name: "Akash Ruth", referrals: 154, prize: 1000000, photo: "/pop.webp" },
     { id: 6, name: "Jane zaid", referrals: 108, prize: 30000, photo: "/jane.jpg" },
     { id: 7, name: "Doj kabir", referrals: 98, prize: 20000, photo: "/doe.jpg" },
-    { id: 8, name: "Diksha", referrals: 94, prize: 10000, photo: "/alice.jpg" },
+    { id: 8, name: "Dishu", referrals: 94, prize: 10000, photo: "/alice.jpg" },
     { id: 9, name: "Bob Sharma", referrals: 85, prize: 8000, photo: "/bob.jpg" },
     { id: 0, name: "Sonu ", referrals: 81, prize: 6000, photo: "/jane.jpg" },
     { id: 11, name: "Sahil Khanna", referrals: 78, prize: 5000, photo: "/doe.jpg" },

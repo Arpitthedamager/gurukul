@@ -126,7 +126,7 @@ const FeaturesSection = () => {
                 <strong>How I get free refferals from Gurukul Skills?</strong>
               </h5>
               <p className="text-lg mb-3">
-                For free refferals just e-mail with your details just after enrolled in our courses or subscriptions and after 48 hours you get upto 10 refferals after required elgibility criteria.
+                For free refferals just e-mail with your details just after enrolled in our courses or subscriptions within 48 hours you get upto 10 refferals.
               </p>
             </div>
             <div className="item">
@@ -157,12 +157,10 @@ const FeaturesSection = () => {
             </div>
             <div className="item">
               <h5 className="text-2xl font-semibold mb-3">
-                <strong>How do I stay updated with notifications?</strong>
+                <strong>What is the benefits of Leader-Board ranking?</strong>
               </h5>
               <p className="text-lg mb-3">
-                Never miss a beat with our notification system! Stay informed
-                about course updates, new subscriptions, and more right from
-                your dashboard.
+                The main benefits from this Leader-Board, you will get cash prizes according to your refferals ranks and for more see our blogs.
               </p>
             </div>
             <div className="item">

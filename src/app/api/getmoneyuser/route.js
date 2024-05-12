@@ -20,15 +20,22 @@ export async function GET(req, res) {
     }
 
     const userData = await User.findOne({ email });
-    
+
     if (!userData) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
-    const coursesFromDB = userData.Subscription; // Assuming courses is an array field in your user schema
+    const { _id: userId, current_balance, Transaction } = userData;
 
-    console.log("Courses from DB:", coursesFromDB); // Logging the courses to console
+    console.log("User ID:", userId);
+    console.log("Current Balance:", current_balance);
+    console.log("Transactions:", Transaction);
 
-    return NextResponse.json(coursesFromDB, { status: 200 });
+    return NextResponse.json(
+      { userId, current_balance, Transaction },
+      { status: 200 }
+    );
+
+    // Logging the courses to console
   } catch (error) {
     console.error("Error fetching user data:", error);
     return NextResponse.json(
