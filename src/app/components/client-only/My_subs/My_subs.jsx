@@ -4,15 +4,47 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 
 const My_subs = () => {
-  const { data: session } = useSession();
+  const { status: data, data: session } = useSession();
+  const [coursesformateFromDB, setcoursesformateFromDB] = useState([]);
 
-  const subscriptionsFromDB = session && session.Subscription
-    ? session.Subscription.map((sub) => ({
-        id: parseInt(sub.Subscriptionid), // Update the property name
-        referCode: sub.Subscription_refer,
-      }))
-    : [];
-    console.log(subscriptionsFromDB);
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await fetch("/api/getsubuser");
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await res.json();
+        // console.log(data,"data");
+        setcoursesformateFromDB(data); // Accessing the 'course' array
+        setUserData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+  // console.log(coursesformateFromDB, "cor");
+  // console.log(userData, "user");
+  // const coursesFromDB = [
+  //   { id: 1, referCode: "ABC123" },
+  //   { id: 3, referCode: "XYZ789" },
+  // ];
+  const subscriptionsFromDB = coursesformateFromDB.map((course) => ({
+    id: course.Subscriptionid,
+    referCode: course.Subscription_refer,
+  }));
+  // const subscriptionsFromDB = session && session.Subscription
+  //   ? session.Subscription.map((sub) => ({
+  //       id: parseInt(sub.Subscriptionid), // Update the property name
+  //       referCode: sub.Subscription_refer,
+  //     }))
+  //   : [];
+    // console.log(subscriptionsFromDB);
   const subscriptions = [
     {
       id: 1,
@@ -41,7 +73,7 @@ const My_subs = () => {
 
   useEffect(() => {
     filterSubscriptions();
-  }, []);
+  }, [userData]);
   const filterSubscriptions = () => {
     const filteredSubscriptions = subscriptions.map((subscription) => {
       const foundSubscription = subscriptionsFromDB.find(

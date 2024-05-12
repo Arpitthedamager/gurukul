@@ -9,9 +9,42 @@ import Image from "next/image";
 
 const CoursesPage = () => {
   const { status: data, data: session } = useSession();
+  const [coursesformateFromDB, setcoursesformateFromDB] = useState([]);
+
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await fetch("/api/getcoruser");
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await res.json();
+        setcoursesformateFromDB(data); // Accessing the 'course' array
+        setUserData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  // const coursesFromDB = [
+  //   { id: 1, referCode: "ABC123" },
+  //   { id: 3, referCode: "XYZ789" },
+  // ];
+  // const coursesFromDB = coursesformateFromDB.map((course) => ({
+  //   id: course.courseid,
+  //   referCode: course.courses_refer,
+  // }));
+ 
   const coursesFromDB = session
     ? session.course.map((course) => parseInt(course.courseid)) // Convert to integer if needed
     : [];
+    
 
   const coursesData = [
     {
