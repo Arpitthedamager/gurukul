@@ -26,7 +26,7 @@ export async function GET(req, res) {
     }
     const coursesFromDB = userData.Subscription; // Assuming courses is an array field in your user schema
 
-    console.log("Courses from DB:", coursesFromDB); // Logging the courses to console
+    // console.log("Courses from DB:", coursesFromDB); // Logging the courses to console
 
     return NextResponse.json(coursesFromDB, { status: 200 });
   } catch (error) {

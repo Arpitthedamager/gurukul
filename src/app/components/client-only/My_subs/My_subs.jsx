@@ -28,16 +28,16 @@ const My_subs = () => {
 
     fetchUserData();
   }, []);
+  const subscriptionsFromDB = coursesformateFromDB.map((course) => ({
+    id: course.Subscriptionid,
+    referCode: course.Subscription_refer,
+  }));
   // console.log(coursesformateFromDB, "cor");
   // console.log(userData, "user");
   // const coursesFromDB = [
   //   { id: 1, referCode: "ABC123" },
   //   { id: 3, referCode: "XYZ789" },
   // ];
-  const subscriptionsFromDB = coursesformateFromDB.map((course) => ({
-    id: course.Subscriptionid,
-    referCode: course.Subscription_refer,
-  }));
   // const subscriptionsFromDB = session && session.Subscription
   //   ? session.Subscription.map((sub) => ({
   //       id: parseInt(sub.Subscriptionid), // Update the property name

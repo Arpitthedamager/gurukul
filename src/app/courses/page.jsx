@@ -31,20 +31,9 @@ const CoursesPage = () => {
 
     fetchUserData();
   }, []);
-
-  // const coursesFromDB = [
-  //   { id: 1, referCode: "ABC123" },
-  //   { id: 3, referCode: "XYZ789" },
-  // ];
-  // const coursesFromDB = coursesformateFromDB.map((course) => ({
-  //   id: course.courseid,
-  //   referCode: course.courses_refer,
-  // }));
- 
-  const coursesFromDB = session
-    ? session.course.map((course) => parseInt(course.courseid)) // Convert to integer if needed
-    : [];
-    
+  const coursesFromDB = coursesformateFromDB.map((course) => {
+    return course.courseid;
+  });
 
   const coursesData = [
     {
@@ -103,7 +92,9 @@ const CoursesPage = () => {
     },
   ];
 
-  const coursesToShow = coursesData.filter((course) => !coursesFromDB.includes(course.id));
+  const coursesToShow = coursesData.filter(
+    (course) => !coursesFromDB.includes(course.id)
+  );
 
   const handleBuyNow = (courseTitle) => {
     console.log(`Buying ${courseTitle}`);

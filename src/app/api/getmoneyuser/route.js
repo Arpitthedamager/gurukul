@@ -26,9 +26,9 @@ export async function GET(req, res) {
     }
     const { _id: userId, current_balance, Transaction } = userData;
 
-    console.log("User ID:", userId);
-    console.log("Current Balance:", current_balance);
-    console.log("Transactions:", Transaction);
+    // console.log("User ID:", userId);
+    // console.log("Current Balance:", current_balance);
+    // console.log("Transactions:", Transaction);
 
     return NextResponse.json(
       { userId, current_balance, Transaction },

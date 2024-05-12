@@ -15,9 +15,9 @@ export async function POST(req, res) {
 
   try {
     // Fetch user document from database
-    console.log("id",userId)
-    console.log("amount",amount)
-    console.log("upiId",upiId)
+    // console.log("id",userId)
+    // console.log("amount",amount)
+    // console.log("upiId",upiId)
     const user = await User.findById(userId);
 
     console.log(user)

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import {useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
@@ -14,14 +14,40 @@ const FeatureBox = () => {
     email = session.user.email;
     console.log(email);
   }
-  const subscriptionsFromDB =
-    session && session.Subscription
-      ? session.Subscription.map((sub) => ({
-          id: parseInt(sub.Subscriptionid), // Update the property name
-          referCode: sub.sub_refer,
-        }))
-      : [];
-      
+  // const subscriptionsFromDB =
+  //   session && session.Subscription
+  //     ? session.Subscription.map((sub) => ({
+  //         id: parseInt(sub.Subscriptionid), // Update the property name
+  //         referCode: sub.sub_refer,
+  //       }))
+  //     : [];
+  const [coursesformateFromDB, setcoursesformateFromDB] = useState([]);
+
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await fetch("/api/getsubuser");
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await res.json();
+        // console.log(data,"data");
+        setcoursesformateFromDB(data); // Accessing the 'course' array
+        setUserData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+  const subscriptionsFromDB = coursesformateFromDB.map((course) => ({
+    id: course.Subscriptionid,
+    referCode: course.Subscription_refer,
+  }));
 
   const subscriptions = [
     {

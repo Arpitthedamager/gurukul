@@ -18,7 +18,7 @@ const WalletPage = () => {
         }
         const userData = await response.json();
         setUserId(userData.userId);
-        setBalance(userData.current_balance        );
+        setBalance(userData.current_balance);
         setTransactions(userData.Transaction);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -40,25 +40,28 @@ const WalletPage = () => {
           amount: -amount,
           timestamp: new Date().toLocaleString(),
         };
-        setTransactions((prevTransactions) => [...prevTransactions, transaction]);
+        setTransactions((prevTransactions) => [
+          ...prevTransactions,
+          transaction,
+        ]);
         // Reset redeem amount input
         setRedeemAmount("");
 
         // Make the API call to backend to store the transaction data
-        const response = await fetch('/api/wallet', {
-          method: 'POST',
+        const response = await fetch("/api/wallet", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ amount, upiId, userId })
+          body: JSON.stringify({ amount, upiId, userId }),
         });
 
         if (!response.ok) {
-          throw new Error('Failed to add transaction');
+          throw new Error("Failed to add transaction");
         }
       } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to redeem amount. Please try again later.');
+        console.error("Error:", error);
+        alert("Failed to redeem amount. Please try again later.");
         // Revert the balance and transaction history changes if there was an error
         setBalance((prevBalance) => prevBalance + amount);
         setTransactions((prevTransactions) => prevTransactions.slice(0, -1));
@@ -77,7 +80,8 @@ const WalletPage = () => {
             <div className="flex justify-between items-center mb-4">
               <div className="text-sm text-gray-600">Balance:</div>
               <div className="text-2xl font-bold text-blue-500">
-                ₹{balance ? balance.toFixed(2) : "0.00"} {/* Null check for balance */}
+                ₹{balance ? balance.toFixed(2) : "0.00"}{" "}
+                {/* Null check for balance */}
               </div>
             </div>
             <hr className="my-4" />
@@ -99,7 +103,7 @@ const WalletPage = () => {
                     id="amount"
                     name="amount"
                     placeholder="Enter amount"
-                    min="0"
+                    min="100"
                     value={redeemAmount}
                     onChange={(e) => setRedeemAmount(e.target.value)}
                     required
@@ -130,28 +134,33 @@ const WalletPage = () => {
                 </div>
               </form>
             </div>
-            <div className="mt-8">
-              <h2 className="text-xl font-bold text-gray-800 mb-2">
-                Transaction History
-              </h2>
-              <ul>
-                {transactions && transactions.map((transaction, index) => (
-                  <li key={index} className="text-gray-600 mb-2">
-                    {transaction.amount < 0 ? (
-                      <span className="text-red-500">
-                        -₹{Math.abs(transaction.amount).toFixed(2)}
-                      </span>
-                    ) : (
-                      <span className="text-green-500">
-                        +₹{transaction.amount.toFixed(2)}
-                      </span>
-                    )}
-                    <span className="ml-2 text-sm text-gray-400">
-                      {transaction.timestamp}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-8">
+                <h2 className="text-xl font-bold text-gray-800 mb-2">
+                  Transaction History
+                </h2>
+            <div
+              className="mt-8mt-8 max-h-40 overflow-y-auto"
+            >
+                <ul>
+                  {transactions &&
+                    transactions.slice(0).reverse().map((transaction, index) => (
+                      <li key={index} className="text-gray-600 mb-2">
+                        {transaction.amount < 0 ? (
+                          <span className="text-red-500">
+                            -₹{Math.abs(transaction.amount).toFixed(2)}
+                          </span>
+                        ) : (
+                          <span className="text-green-500">
+                            +₹{transaction.amount.toFixed(2)}
+                          </span>
+                        )}
+                        <span className="ml-2 text-sm text-gray-400">
+                          {transaction.timestamp}
+                        </span>
+                      </li>
+                    ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

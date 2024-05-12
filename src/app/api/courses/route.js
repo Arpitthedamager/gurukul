@@ -13,7 +13,6 @@ export async function POST(req, res) {
   // Your POST method logic here
   // Ensure MongoDB connection
   await connectToDB();
-  console.log(req.body);
   if (req.method === "POST") {
     try {
       // Extract necessary data from the request body

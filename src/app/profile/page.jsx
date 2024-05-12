@@ -48,14 +48,6 @@ const ProfileCard = () => {
     fetchData();
   }, [session]);
   console.log(session);
-  // const { data: session } = useSession();
-  // const [isEditing, setIsEditing] = useState(false);
-  // const coursesFromDB = session
-  // ? session.course.map((course) => ({
-  //     id: parseInt(course.courseid), // Convert to integer if needed
-  //     referCode: course.courses_refer,
-  //   }))
-  // : [];
   // const [profileData, setProfileData] = useState({
   //   name: "Eleanor Pena",
   //   email: "@eleanorpena",
