@@ -1,49 +1,54 @@
-//working but with defult
 import { User } from "../../lib/models";
 import { connectToDB } from "../../lib/util";
 import { NextResponse } from "next/server";
-
-
 
 const defaultTransaction = {
   email: "arpitthekumar37@gmail.com",
   courseId: 2,
 };
 export async function POST(req, res) {
-  // Your POST method logic here
   // Ensure MongoDB connection
   await connectToDB();
+
   if (req.method === "POST") {
     try {
       // Extract necessary data from the request body
       const { email, courseId } = await req.json();
-      // const { email, courseId } =  defaultTransaction;
-      console.log("Received data:", req.json());
-      console.log(email);
-      console.log(courseId);
-      // Generate the courseRefer here (for demonstration purposes, generating a random string)
-      const courseRefer = generateCourseRefer();
-      const courseid = parseInt(courseId);
+      // const { email, courseId } = defaultTransaction;
+
+      console.log(email, courseId);
+      // Ensure courseId is a number
+      const subscriptionIdNumber = parseInt(courseId);
+      console.log(subscriptionIdNumber);
 
       // Fetch the user from the database based on the email
-      const user = await User.findOne({ email: email });
-      console.log(courseid);
+      const user = await User.findOne({ email });
+      console.log(user)
 
       if (!user) {
         return NextResponse.json({ error: "User not found" }, { status: 404 });
       }
-      user.course.push({ courseid: courseid, courses_refer: courseRefer });
-      console.log(courseid, courseRefer);
 
-      // Update the user's document with the purchased course details and the generated referral code
-      // user.course = { courseId, courses_refer: courseRefer };
+      // Generate a unique subscriptionRefer
+      const subscriptionsRefer = generatesubscriptionRefer();
+
+      // Logic to determine sub course ids based on subscription id
+      
+      // Add each sub-course with its unique referral code
+     
+
+      // Add subscription with its unique referral code
+      user.course.push({
+        courseid: subscriptionIdNumber,
+        courses_refer: subscriptionsRefer,
+      });
 
       // Save the updated user document
       await user.save();
 
       // Return a success response
       return NextResponse.json(
-        { message: "Course added successfully" },
+        { message: "Subscription added successfully" },
         { status: 200 }
       );
     } catch (error) {
@@ -58,15 +63,17 @@ export async function POST(req, res) {
   }
 }
 
-// Function to generate a random alphanumeric string for courseRefer
-function generateCourseRefer() {
+// Function to generate a random alphanumeric string for subscriptionRefer
+function generatesubscriptionRefer() {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let courseRefer = "";
-  for (let i = 0; i < 6; i++) {
-    courseRefer += characters.charAt(
+  let subscriptionRefer = "";
+  for (let i = 0; i < 9; i++) {
+    subscriptionRefer += characters.charAt(
       Math.floor(Math.random() * characters.length)
     );
   }
-  return courseRefer;
+  return subscriptionRefer;
 }
+
+

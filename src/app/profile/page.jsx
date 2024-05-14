@@ -181,7 +181,7 @@ const ProfileCard = () => {
                 <FaLinkedin className="text-3xl text-gray-900 hover:text-blue-500 cursor-pointer" />
               </div>
               <div className="px-4 py-2 mt-4 bg-gray-100 rounded-md text-sm text-gray-800">
-                DOB {profileData.joined}
+                DOB {new Date(profileData.joined).toLocaleDateString()}
               </div>
             </div>
           </div>
