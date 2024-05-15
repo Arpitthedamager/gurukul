@@ -6,8 +6,10 @@ const keywords = [
   "Gurukul Skills",
   "gurukul Skills",
   "Gurukul skills",
-  "gurukul skills",
-
+  "Skills",
+  "skills",
+  "Gurukul",
+  "gurukul",
   "online courses",
   "skill development",
   "skill enhancement",
@@ -88,6 +90,7 @@ export default function RootLayout({ children }) {
     
     <html lang="en">
       <head>
+      <meta name="google-site-verification" content="SqdtlaU_dmU1iz-KWH3Bg85bvVkHLrOM3RCBO7TiTBs" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={metadata.description} />
