@@ -4,6 +4,10 @@ import AuthProvider from "./utils/SessionProvider";
 const inter = Inter({ subsets: ["latin"] });
 const keywords = [
   "Gurukul Skills",
+  "gurukul Skills",
+  "Gurukul skills",
+  "gurukul skills",
+
   "online courses",
   "skill development",
   "skill enhancement",
