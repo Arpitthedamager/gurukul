@@ -74,8 +74,8 @@ const keywords = [
 
 
 export const metadata = {
-  title: "Gurukul skills",
-  description: "Welcome to Gurukul skills",
+  title: "Gurukul Skills - Online Courses & Skill Development",
+  description: "Gurukul Skills offers a variety of online courses designed to enhance your professional development and skillset. Join our learning community today!",
 };
 const keywordsString = keywords.join(", ");
 
@@ -83,11 +83,22 @@ export default function RootLayout({ children }) {
   return (
     
     <html lang="en">
-      <head>   <meta
-          name="keywords"
-          content={keywordsString}
-        />
-        </head>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={keywordsString} />
+        <meta name="author" content="Gurukul Skills" />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content="https://gurukulskills.site/images/og-image.jpg" />
+        <meta property="og:url" content="https://gurukulskills.site" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:description" content={metadata.description} />
+        <meta name="twitter:image" content="https://gurukulskills.site/images/twitter-card.jpg" />
+        <title>{metadata.title}</title>
+      </head>
       <body className={inter.className}>
         <main>
           <AuthProvider>
