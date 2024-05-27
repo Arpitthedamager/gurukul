@@ -38,7 +38,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="mb-3">
-                <a href="/subscripition" className="hover:text-gray-300 transition duration-300">
+                <a href="/subscription" className="hover:text-gray-300 transition duration-300">
                   Subscriptions
                 </a>
               </li>
