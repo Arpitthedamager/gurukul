@@ -150,8 +150,8 @@ const FeatureBox = () => {
                     alt={subscription.name}
                     className="w-full h-full object-cover"
                     width={10}
-                    height='fill'
-                    layout="fill"
+                    height={1000}
+                    layout="responsive"
                   />
                 </div>
                 <div className="item-content p-6 bg-white">
