@@ -21,6 +21,7 @@ const FeatureBox = () => {
   //         referCode: sub.sub_refer,
   //       }))
   //     : [];
+  // https://gurukulskills.site/buysub/1?payment_id=pay_O7tpTTwbEwqn2F
   const [coursesformateFromDB, setcoursesformateFromDB] = useState([]);
 
   const [userData, setUserData] = useState(null);
