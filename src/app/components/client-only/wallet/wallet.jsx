@@ -30,10 +30,6 @@ const WalletPage = () => {
 
   const handleRedeem = async (e) => {
     e.preventDefault();
-    if (userId === "arpitthedamager@gmail.com") {
-      alert("Payment is temporarily blocked for you. Please contact us at gurukulskills57@gmail.com for unblocking.");
-      return;
-    }
     const amount = parseFloat(redeemAmount);
     if (!isNaN(amount) && amount > 0 && amount <= balance) {
       try {
