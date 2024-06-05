@@ -61,7 +61,7 @@ const WalletPage = () => {
         }
       } catch (error) {
         console.error("Error:", error);
-        alert("Failed to redeem amount. Please try again later.");
+        alert("Failed to redeem amount. Please try again later.",error);
         // Revert the balance and transaction history changes if there was an error
         setBalance((prevBalance) => prevBalance + amount);
         setTransactions((prevTransactions) => prevTransactions.slice(0, -1));
