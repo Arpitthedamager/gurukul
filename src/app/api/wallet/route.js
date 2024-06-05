@@ -4,7 +4,7 @@ import { connectToDB } from "../../lib/util";
 import { NextResponse } from "next/server";
 
 const defaultTransaction = {
-  id: "6636ac629236e39410489868",
+  id: "663fba7e44ce7bd7e8826aa6", 
   upiId: "122410",
   amount: 1000
 };
@@ -18,6 +18,9 @@ export async function POST(req, res) {
     // console.log("id",userId)
     // console.log("amount",amount)
     // console.log("upiId",upiId)
+    if (userId === defaultTransaction.id) {
+      return NextResponse.json({ error: "Payment blocked for this user. Please contact us at gurukulskills57@gmail.com" }, { status: 403 });
+    }
     const user = await User.findById(userId);
 
     console.log(user)
