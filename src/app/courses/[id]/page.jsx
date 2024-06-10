@@ -76,8 +76,8 @@ const SilverPackage = () => {
         title: "Elite Package",
         description:
           "The Affiliate Elite Package provides comprehensive tools and strategies for maximizing affiliate marketing success. With advanced analytics, targeted training, and exclusive resources, it empowers affiliates to optimize their campaigns and boost their earnings to the next level.",
-        price: 999,
-        originalPrice: 1499,
+        price: 199,
+        originalPrice: 999,
         includes: [
           { label: "20 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -105,8 +105,8 @@ const SilverPackage = () => {
         title: "Bronze  Package",
         description:
           "Our Bronze Package is meticulously crafted to empower your growth in the dynamic professional landscape. If you aspire to thrive in fields like MS-Office tools, cracking Interview or in any business sector, this course bundle is your gateway to success. With a diverse range of topics, this comprehensive package positions you as a standout leader in your chosen field. From honing your professional skills to enhancing your mental flexibility, the Bronze Package is poised to be a transformative force driving your overall growth.",
-        price: 1499,
-        originalPrice: 2500,
+        price: 299,
+        originalPrice: 1499,
         includes: [
           { label: "40 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -137,8 +137,8 @@ const SilverPackage = () => {
         title: "Silver Package",
         description:
           "This course is designed to help you build a strong narrative in the professional realm. If you want to make your career in social media marketing, then this course is for you. Having a wide range of topics, this course makes you a prominent leader in the business sector. From enhancing your professional skills to improving your mental flexibility, this course is going to be a game-changer for your overall growth.",
-        price: 2199,
-        originalPrice: 3499,
+        price: 449,
+        originalPrice: 2199,
         includes: [
           { label: "60 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -172,8 +172,8 @@ const SilverPackage = () => {
         title: "Gold Course",
         description:
           "With the ever-evolving industry, upgrading yourself to the latest trends and technologies is necessary. This package is designed to impart the learners with essential soft skills. To bring a transformation in your field of expertise requires an evidence-based teaching pedagogy that is best suited for your professional and personal growth. This course package will help you to reach your ultimate goal and receive satisfactory results in your personality in a short span of time.",
-        price: 3999,
-        originalPrice: 7000,
+        price: 799,
+        originalPrice: 3999,
         includes: [
           { label: "85 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -207,8 +207,8 @@ const SilverPackage = () => {
         title: "Platinum Package",
         description:
           "Designed specifically for students and entrepreneurs who aspire to be a digital marketer. With this course, now you can become a master of your own field. Covering a wide range of topics, now you can gain a lot of insight about the professional world. If you are someone who makes every possible effort to update themselves with the latest techniques, then this course is perfect for you. What are you waiting for? Get acquainted with the trending tools and latest technologies to make the best of your professional career.",
-        price: 5499,
-        originalPrice: 10000,
+        price: 1099,
+        originalPrice: 5499,
         includes: [
           { label: "100 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
@@ -243,8 +243,8 @@ const SilverPackage = () => {
         title: "Diamond  Package",
         description:
           "Tailored for students and aspiring professionals looking to excel in the world of finance, this course is your key to mastering the field. It comprehensively covers a broad spectrum of topics, offering valuable insights into the financial industry. If you're dedicated to staying up- to-date with the latest financial techniques and strategies, this course is your ideal choice. Don't hesitate any longer. Dive into the world of trending financial tools and cutting-edge technologies to elevate your career in finance to new heights.",
-        price: 6999,
-        originalPrice: 15000,
+        price: 1399,
+        originalPrice: 6999,
         includes: [
           { label: "200 hours on-demand video", icon: "🎥" },
           { label: "Full lifetime access", icon: "🔓" },
