@@ -55,7 +55,7 @@ const FeatureBox = () => {
       id: 1,
       name: "Basic",
       imageSrc: "/basic.jpeg",
-      price: "₹ 399",
+      price: "₹ 599",
       link: "https://next-auth.js.org/v3/tutorials/creating-a-database-adapter#required-methods",
       description:
         "Dive into the world of technology with our expert-led courses.",
@@ -64,7 +64,7 @@ const FeatureBox = () => {
       id: 2,
       name: "Premium",
       imageSrc: "/Premium.jpeg",
-      price: "₹ 599",
+      price: "₹ 899",
       link: "",
       description:
         "Join the financial revolution and master cutting-edge technologies.",
@@ -73,7 +73,7 @@ const FeatureBox = () => {
       id: 3,
       name: "Pro",
       imageSrc: "/pro.jpeg",
-      price: "₹ 699",
+      price: "₹ 1099",
       link: "",
       description:
         "Unlock the power of passive income with our comprehensive course.",
