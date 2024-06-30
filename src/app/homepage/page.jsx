@@ -6,6 +6,7 @@ import Leaderboard from "../components/client-only/leader_bord/Leader_Bord";
 import FeaturesSection from "../components/client-only/featuresection/FeatureSection";
 import Footer from "../components/client-only/footer/Footer";
 import Artical from "../components/client-only/artical/Artical";
+import CourseBook from "../components/client-only/CourseBook";
 
 export const metadata = {
   title: "Home Page",
@@ -29,7 +30,7 @@ const HomePage = () => {
       </div>
       <div className="min-h-screen">
         <Artical />
-        <FeatureBox />
+        <CourseBook/>
         {/* <MidSection /> */}
         <Leaderboard />
         <FeaturesSection />
