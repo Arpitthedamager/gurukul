@@ -152,7 +152,11 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="mt-10 text-center">
-          <p>&copy; {new Date().getFullYear()} Gurukul skills. All rights reserved. Created by #Mr.Damager</p>
+          <p>&copy; {new Date().getFullYear()} Gurukul skills. All rights reserved. Created by <a  href="webtechstudio.site"
+>
+            #WebTechStudio
+          </a>
+          </p>
         </div>
       </div>
     </footer>
